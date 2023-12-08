@@ -1,6 +1,7 @@
 module lagasse.scheduler {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens lagasse.scheduler to javafx.fxml;
