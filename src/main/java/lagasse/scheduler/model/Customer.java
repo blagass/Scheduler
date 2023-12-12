@@ -21,12 +21,13 @@ public class Customer {
      * @param postal_code
      * @param phone
      */
-    public Customer(int customer_id, String customer_name, String address, String postal_code, String phone) {
+    public Customer(int customer_id, String customer_name, String address, String postal_code, String phone, int division_id) {
         this.customer_id = customer_id;
         this.customer_name = customer_name;
         this.address = address;
         this.postal_code = postal_code;
         this.phone = phone;
+        this.division_id = division_id;
     }
 
     /**
@@ -68,4 +69,10 @@ public class Customer {
     public String getPhone(){
         return phone;
     }
+
+    /**
+     *
+     * @return
+     */
+    public int getDivision_id(){return division_id;}
 }

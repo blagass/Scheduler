@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class JDBC {
+    ///Class Variables///
     private static final String protocol = "jdbc";
     private static final String vendor = ":mysql:";
     private static final String location ="//localhost/";
@@ -14,8 +15,12 @@ public abstract class JDBC {
     private static final String userName = "sqlUser";
     private static final String password = "Passw0rd!";
     public static Connection connection;
+    ///
 
 
+    /**
+     * Opens the DB connection
+     */
     public static void openConnection(){ //OPEN DATABASE
         try{
             Class.forName(driver);
@@ -31,6 +36,9 @@ public abstract class JDBC {
         }
     }
 
+    /**
+     * CLoses the DB Connection
+     */
     public static void closeConnection(){ //CLOSE DATABASE
         try{
             connection.close();
