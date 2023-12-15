@@ -20,10 +20,15 @@
             </StackPane>
             <StackPane prefHeight="290.0" prefWidth="1000.0">
                <children>
-                  <TableView prefHeight="255.0" prefWidth="1000.0">
+                  <TableView fx:id="customerTableView" prefHeight="255.0" prefWidth="1000.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="custIdCol" prefWidth="89.66666412353516" text="Customer ID" />
+                      <TableColumn fx:id="custNameCol" prefWidth="60.333335876464844" text="Name" />
+                        <TableColumn fx:id="custAddressCol" prefWidth="75.0" text="Address" />
+                        <TableColumn fx:id="custPostalCol" prefWidth="99.0" text="Postal Code" />
+                        <TableColumn fx:id="custPhoneCol" prefWidth="93.66668701171875" text="Phone" />
+                        <TableColumn fx:id="custCountryCol" prefWidth="70.33331298828125" text="Country" />
+                        <TableColumn fx:id="custStateCol" prefWidth="72.66668701171875" text="State" />
                     </columns>
                   </TableView>
                </children>

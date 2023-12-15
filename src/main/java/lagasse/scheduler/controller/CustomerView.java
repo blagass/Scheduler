@@ -10,6 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lagasse.scheduler.helper.CustomerQuery;
 import lagasse.scheduler.model.Customer;
@@ -21,6 +24,32 @@ import java.util.ResourceBundle;
 
 public class CustomerView implements Initializable {
 
+    @FXML
+    private TableColumn<?, ?> custAddressCol;
+
+    @FXML
+    private TableColumn<?, ?> custCountryCol;
+
+    @FXML
+    private TableColumn<?, ?> custIdCol;
+
+    @FXML
+    private TableColumn<?, ?> custNameCol;
+
+    @FXML
+    private TableColumn<?, ?> custPhoneCol;
+
+    @FXML
+    private TableColumn<?, ?> custPostalCol;
+
+    @FXML
+    private TableColumn<?, ?> custStateCol;
+
+    @FXML
+    private TableView<?> customerTableView;
+
+    @FXML
+    private Button exitBtn;
 
     @FXML
     void onExitBtn(ActionEvent event) throws IOException {
@@ -34,6 +63,11 @@ public class CustomerView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
+
+        custNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+
+
 
     }
 }
