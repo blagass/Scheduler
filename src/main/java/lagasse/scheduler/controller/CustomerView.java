@@ -46,7 +46,7 @@ public class CustomerView implements Initializable {
     private TableColumn<?, ?> custStateCol;
 
     @FXML
-    private TableView<?> customerTableView;
+    private TableView<Customer> customerTableView;
 
     @FXML
     private Button exitBtn;
@@ -64,10 +64,19 @@ public class CustomerView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
-
+        try {
+            transferCustomer.setAll(CustomerQuery.getAllCustomers());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        custIdCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         custNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        custAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        custPostalCol.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        custCountryCol.setCellValueFactory(new PropertyValueFactory<>("division_id"));
 
-
+        customerTableView.setItems(transferCustomer);
 
     }
 }

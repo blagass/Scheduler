@@ -2,7 +2,6 @@ package lagasse.scheduler.helper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public abstract class JDBC {
     ///Class Variables///
@@ -20,6 +19,8 @@ public abstract class JDBC {
 
     /**
      * Opens the DB connection
+     *
+     * @return
      */
     public static void openConnection(){ //OPEN DATABASE
         try{
@@ -35,6 +36,7 @@ public abstract class JDBC {
 
         }
     }
+
 
     /**
      * CLoses the DB Connection

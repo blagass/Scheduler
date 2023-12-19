@@ -5,6 +5,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lagasse.scheduler.controller.CustomerView;
 import lagasse.scheduler.model.Customer;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -63,8 +64,8 @@ public abstract class CustomerQuery {
      * @throws SQLException
      */
     public static ObservableList<Customer> getAllCustomers() throws SQLException {
+        JDBC.openConnection();
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
-
         String sql = "SELECT * FROM CUSTOMERS";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
