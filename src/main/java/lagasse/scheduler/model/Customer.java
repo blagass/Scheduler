@@ -74,5 +74,5 @@ public class Customer {
      *
      * @return
      */
-    public int getDivision_id(){return division_id;}
+    public int getDivisionId(){return division_id;}
 }
