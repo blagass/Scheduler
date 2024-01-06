@@ -6,7 +6,7 @@ public class FirstLevelDivision {
     private String division;
     ////////////////////////////////
 
-    ///Forieng Keys///
+    ///Forieng Keys//
     public int country_id;
     ////////////////////////////////
 

@@ -14,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import lagasse.scheduler.helper.CustomerQuery;
+import lagasse.scheduler.dao.CustomerQuery;
 import lagasse.scheduler.model.Customer;
 
 import java.io.IOException;

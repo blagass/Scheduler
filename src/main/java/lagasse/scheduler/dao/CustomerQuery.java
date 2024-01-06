@@ -1,11 +1,9 @@
-package lagasse.scheduler.helper;
+package lagasse.scheduler.dao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.cell.PropertyValueFactory;
-import lagasse.scheduler.controller.CustomerView;
+import lagasse.scheduler.dao.JDBC;
 import lagasse.scheduler.model.Customer;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

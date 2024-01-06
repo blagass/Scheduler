@@ -1,4 +1,4 @@
-package lagasse.scheduler.helper;
+package lagasse.scheduler.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
