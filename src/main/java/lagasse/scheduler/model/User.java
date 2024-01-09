@@ -2,20 +2,20 @@ package lagasse.scheduler.model;
 
 public class User {
     ///Class Variables///
-    private int user_id;
-    private String user_name;
+    private int userId;
+    private String userName;
     private String password;
     ////////////////////////////////
 
     /**
      * User Constructor
-     * @param user_id
-     * @param user_name
+     * @param userId
+     * @param userName
      * @param password
      */
-    public User(int user_id, String user_name, String password) {
-        this.user_id = user_id;
-        this.user_name = user_name;
+    public User(int userId, String userName, String password) {
+        this.userId = userId;
+        this.userName = userName;
         this.password = password;
     }
 
@@ -24,7 +24,7 @@ public class User {
      * @return user_id
      */
     public int getUserId() {
-        return user_id;
+        return userId;
     }
 
     /**
@@ -32,7 +32,7 @@ public class User {
      * @return user_name
      */
     public String getUserName() {
-        return user_name;
+        return userName;
     }
 
     /**

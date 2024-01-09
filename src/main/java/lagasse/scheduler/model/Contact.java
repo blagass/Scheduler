@@ -2,21 +2,21 @@ package lagasse.scheduler.model;
 
 public class Contact {
     ///Class Variables///
-    private int contact_id;
-    private String contact_name;
-    private String contact_email;
+    private int contactId;
+    private String contactName;
+    private String contactEmail;
     ////////////////////////////////
 
     /**
      * Contact Constructor
-     * @param contact_id
-     * @param contact_name
-     * @param contact_email
+     * @param contactId
+     * @param contactName
+     * @param contactEmail
      */
-    public Contact(int contact_id, String contact_name, String contact_email) {
-        this.contact_id = contact_id;
-        this.contact_name = contact_name;
-        this.contact_email = contact_email;
+    public Contact(int contactId, String contactName, String contactEmail) {
+        this.contactId = contactId;
+        this.contactName = contactName;
+        this.contactEmail = contactEmail;
 
     }
 
@@ -25,7 +25,7 @@ public class Contact {
      * @return contact_id
      */
     public int getContactId() {
-        return  contact_id;
+        return contactId;
     }
 
     /**
@@ -33,7 +33,7 @@ public class Contact {
      * @return contact_name
      */
     public String getContactName() {
-        return contact_name;
+        return contactName;
     }
 
     /**
@@ -41,6 +41,6 @@ public class Contact {
      * @return contact_email
      */
     public String getContactEmail() {
-        return contact_email;
+        return contactEmail;
     }
 }

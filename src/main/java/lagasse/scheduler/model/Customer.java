@@ -2,32 +2,32 @@ package lagasse.scheduler.model;
 
 public class Customer {
     ///Class Variables///
-    private int customer_id;
-    private String customer_name;
+    private int customerId;
+    private String customerName;
     private String address;
-    private String postal_code;
+    private String postalCode;
     private String phone;
     ////////////////////////////////
 
     ///Foreign Keys///
-    public int division_id;
+    public int divisionId;
     ////////////////////////////////
 
     /**
      * Customer constructor
-     * @param customer_id
-     * @param customer_name
+     * @param customerId
+     * @param customerName
      * @param address
-     * @param postal_code
+     * @param postalCode
      * @param phone
      */
-    public Customer(int customer_id, String customer_name, String address, String postal_code, String phone, int division_id) {
-        this.customer_id = customer_id;
-        this.customer_name = customer_name;
+    public Customer(int customerId, String customerName, String address, String postalCode, String phone, int divisionId) {
+        this.customerId = customerId;
+        this.customerName = customerName;
         this.address = address;
-        this.postal_code = postal_code;
+        this.postalCode = postalCode;
         this.phone = phone;
-        this.division_id = division_id;
+        this.divisionId = divisionId;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Customer {
      * @return customer_id
      */
     public int getCustomerId() {
-        return customer_id;
+        return customerId;
     }
 
     /**
@@ -43,7 +43,7 @@ public class Customer {
      * @return customer_name
      */
     public String getCustomerName(){
-        return customer_name;
+        return customerName;
     }
 
     /**
@@ -59,7 +59,7 @@ public class Customer {
      * @return postal_code
      */
     public String getPostalCode(){
-        return postal_code;
+        return postalCode;
     }
 
     /**
@@ -74,5 +74,5 @@ public class Customer {
      *
      * @return
      */
-    public int getDivisionId(){return division_id;}
+    public int getDivisionId(){return divisionId;}
 }

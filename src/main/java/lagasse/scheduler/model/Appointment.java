@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 
 public class Appointment {
     ///Class Variables///
-    private int appointment_id;
+    private int appointmentId;
     private String title;
     private String description;
     private String location;
@@ -13,14 +13,14 @@ public class Appointment {
     ////////////////////////////////
 
     ///Foriegn Keys///
-    public int customer_id;
-    public int user_id;
-    public int contact_id;
+    public int customerId;
+    public int userId;
+    public int contactId;
     ////////////////////////////////
 
     /**
      * Appointment Constructor
-     * @param appointment_id
+     * @param appointmentId
      * @param title
      * @param description
      * @param location
@@ -28,8 +28,8 @@ public class Appointment {
      * @param start
      * @param end
      */
-    public Appointment(int appointment_id, String title, String description, String location, String type, LocalDateTime start, LocalDateTime end) {
-        this.appointment_id = appointment_id;
+    public Appointment(int appointmentId, String title, String description, String location, String type, LocalDateTime start, LocalDateTime end) {
+        this.appointmentId = appointmentId;
         this.title = title;
         this.description = description;
         this.location = location;
@@ -43,7 +43,7 @@ public class Appointment {
      * @return appointment_id
      */
     public int getAppointmentId() {
-        return appointment_id;
+        return appointmentId;
     }
 
     /**

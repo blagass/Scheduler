@@ -2,17 +2,17 @@ package lagasse.scheduler.model;
 
 public class Country {
     ///Class Variables///
-    private int country_id;
+    private int countryId;
     private String country;
     ////////////////////////////////
 
     /**
      * Country Constructor
-     * @param country_id
+     * @param countryId
      * @param country
      */
-    public Country(int country_id, String country){
-        this.country_id = country_id;
+    public Country(int countryId, String country){
+        this.countryId = countryId;
         this.country = country;
     }
 
@@ -21,7 +21,7 @@ public class Country {
      * @return country_id
      */
     public int getCountryId() {
-        return country_id;
+        return countryId;
     }
 
     /**

@@ -2,21 +2,21 @@ package lagasse.scheduler.model;
 
 public class FirstLevelDivision {
     ///Class Variables///
-    private int division_id;
+    private int divisionId;
     private String division;
     ////////////////////////////////
 
     ///Forieng Keys//
-    public int country_id;
+    public int countryId;
     ////////////////////////////////
 
     /**
      * FirstLevel Division Constructor
-     * @param division_id
+     * @param divisionId
      * @param division
      */
-    public FirstLevelDivision(int division_id, String division){
-        this.division_id = division_id;
+    public FirstLevelDivision(int divisionId, String division){
+        this.divisionId = divisionId;
         this.division = division;
     }
 
@@ -25,7 +25,7 @@ public class FirstLevelDivision {
      * @return
      */
     public int getDivision_Id(){
-        return division_id;
+        return divisionId;
     }
 
     /**

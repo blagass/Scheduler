@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class customerDAO implements DAO<Customer>{
+public class CustomerDAO implements DAO<Customer>{
     @Override
     public ObservableList<Customer> getAll() throws SQLException {
         JDBC.openConnection();
@@ -33,29 +33,24 @@ public class customerDAO implements DAO<Customer>{
     }
 
     @Override
-    public Customer get(int id) throws SQLException {
-    //WORK ON THIS NEXT
-            String sql = "SELECT * FROM CUSTOMERS WHERE Customer_ID = ?";
-            PreparedStatement ps = JDBC.connection.prepareStatement(sql);
-            ps.setInt ( 1, id);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                int customerId = rs.getInt("Customer_ID");
-                String customerName = rs.getString("Customer_Name");
-                int divisionIdFK = rs.getInt("Division_ID");
-                System.out.print(customerId + " | ");
-                System.out.print(customerName + " | ");
-                System.out.print(divisionIdFK + "\n");
-            }
-    }
-
-    @Override
-    public int insert(Customer customer) throws SQLException {
-        return 0;
+    public int add(Customer customer) throws SQLException {
+//START HERE
+        String sql = "INSERT INTO CUSTOMERS(Customer_Name,Address,Postal_Code, Phone, Division_ID) VALUES(?,?,?,?,?)";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setString(1,customerName);
+        ps.setInt(2,customerAddress);
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected;
     }
 
     @Override
     public int delete(Customer customer) throws SQLException {
-        return 0;
+        /*
+        String sql = "DELETE FROM CUSTOMERS WHERE Customer_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, customerId);
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected;
+         */
     }
 }
