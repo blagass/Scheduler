@@ -14,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import lagasse.scheduler.dao.CustomerQuery;
+import lagasse.scheduler.dao.CustomerDAO;
 import lagasse.scheduler.model.Customer;
 
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class CustomerView implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
         try {
-            transferCustomer.setAll(CustomerQuery.getAllCustomers());
+             transferCustomer.setAll(CustomerDAO.getAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
