@@ -10,12 +10,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lagasse.scheduler.dao.CountryDAO;
 import lagasse.scheduler.dao.CustomerDAO;
+import lagasse.scheduler.model.Country;
 import lagasse.scheduler.model.Customer;
+import lagasse.scheduler.model.FirstLevelDivision;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,12 +50,18 @@ public class CustomerView implements Initializable {
     private TableColumn<?, ?> custStateCol;
 
     @FXML
+    private ComboBox<Country> countryCombo;
+
+    @FXML
+    private ComboBox<FirstLevelDivision> stateCombo;
+
+
+    @FXML
     private TableView<Customer> customerTableView;
 
     @FXML
     private Button exitBtn;
-    @FXML
-    ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
+
 
     @FXML
     void onExitBtn(ActionEvent event) throws IOException {
@@ -65,11 +75,15 @@ public class CustomerView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
+        ObservableList<Country>transferCountry = FXCollections.observableArrayList();
         try {
              transferCustomer.setAll(CustomerDAO.getAll());
+             transferCountry.setAll(CountryDAO.getAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         custIdCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         custNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         custAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -77,7 +91,10 @@ public class CustomerView implements Initializable {
         custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         custCountryCol.setCellValueFactory(new PropertyValueFactory<>("divisionId"));
 
+
         customerTableView.setItems(transferCustomer);
+        countryCombo.setItems(transferCountry);
+
 
     }
 }
