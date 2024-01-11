@@ -2,15 +2,16 @@ package lagasse.scheduler.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import lagasse.scheduler.controller.CustomerView;
 import lagasse.scheduler.model.Customer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerDAO implements DAO<Customer>{
-    @Override
-    public ObservableList<Customer> getAll() throws SQLException {
+public class CustomerDAO{
+
+    public static ObservableList<Customer> getAll() throws SQLException {
         JDBC.openConnection();
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
         String sql = "SELECT * FROM CUSTOMERS";
@@ -32,7 +33,7 @@ public class CustomerDAO implements DAO<Customer>{
 
     }
 
-    @Override
+
     public int add(Customer customer) throws SQLException {
 
         String sql = "INSERT INTO CUSTOMERS(Customer_Name,Address,Postal_Code, Phone, Division_ID) VALUES(?,?,?,?,?)";
@@ -46,7 +47,7 @@ public class CustomerDAO implements DAO<Customer>{
         return rowsAffected;
     }
 
-    @Override
+
     public int delete(int customerId) throws SQLException {
 
         String sql = "DELETE FROM CUSTOMERS WHERE Customer_ID = ?";

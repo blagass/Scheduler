@@ -50,6 +50,8 @@ public class CustomerView implements Initializable {
 
     @FXML
     private Button exitBtn;
+    @FXML
+    ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
 
     @FXML
     void onExitBtn(ActionEvent event) throws IOException {
@@ -63,7 +65,6 @@ public class CustomerView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
         try {
              transferCustomer.setAll(CustomerDAO.getAll());
         } catch (SQLException e) {
@@ -74,7 +75,7 @@ public class CustomerView implements Initializable {
         custAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         custPostalCol.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        custCountryCol.setCellValueFactory(new PropertyValueFactory<>("division_id"));
+        custCountryCol.setCellValueFactory(new PropertyValueFactory<>("divisionId"));
 
         customerTableView.setItems(transferCustomer);
 
