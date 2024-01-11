@@ -9,14 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lagasse.scheduler.dao.CountryDAO;
 import lagasse.scheduler.dao.CustomerDAO;
+import lagasse.scheduler.dao.FirstLevelDivisionDAO;
 import lagasse.scheduler.model.Country;
 import lagasse.scheduler.model.Customer;
 import lagasse.scheduler.model.FirstLevelDivision;
@@ -28,6 +26,10 @@ import java.util.ResourceBundle;
 
 public class CustomerView implements Initializable {
 
+    public TextField customerNameField;
+    public TextField customerAddressField;
+    public TextField customerPostalCodeField;
+    public TextField customerPHoneField;
     @FXML
     private TableColumn<?, ?> custAddressCol;
 
@@ -77,9 +79,11 @@ public class CustomerView implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
         ObservableList<Country>transferCountry = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision>transferDivisions = FXCollections.observableArrayList();
         try {
              transferCustomer.setAll(CustomerDAO.getAll());
              transferCountry.setAll(CountryDAO.getAll());
+             transferDivisions.setAll(FirstLevelDivisionDAO.getAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -91,7 +95,7 @@ public class CustomerView implements Initializable {
         custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         custCountryCol.setCellValueFactory(new PropertyValueFactory<>("divisionId"));
 
-
+        stateCombo.setItems(transferDivisions);
         customerTableView.setItems(transferCustomer);
         countryCombo.setItems(transferCountry);
 

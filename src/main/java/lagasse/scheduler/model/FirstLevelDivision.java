@@ -12,12 +12,15 @@ public class FirstLevelDivision {
 
     /**
      * FirstLevel Division Constructor
+     *
      * @param divisionId
      * @param division
+     * @param countryId
      */
-    public FirstLevelDivision(int divisionId, String division){
+    public FirstLevelDivision(int divisionId, String division, int countryId){
         this.divisionId = divisionId;
         this.division = division;
+        this.countryId = countryId;
     }
 
     /**
@@ -34,5 +37,12 @@ public class FirstLevelDivision {
      */
     public String getDivision(){
         return division;
+    }
+
+    public int getCountryId(){ return countryId;}
+
+    @Override
+    public String toString(){
+        return (division);
     }
 }
