@@ -76,8 +76,8 @@
                               <Label layoutX="71.0" layoutY="25.0" text="State" />
                            </children>
                         </Pane>
-                        <ComboBox fx:id="countryCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="stateCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="countryCombo" onAction="#onCountryCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="stateCombo" onAction="#onStateCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>

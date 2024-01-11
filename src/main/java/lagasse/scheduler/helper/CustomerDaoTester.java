@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class CustomerDaoTester {
     public static boolean testAdd(){
         try {
-            Customer customer = new Customer(-1, "bob", "main st", "absd123", "1234567890", 1);
+            Customer customer = new Customer(-1, "bob", "main st", "absd123", "1234567890",  2);
             CustomerDAO customerDao = new CustomerDAO();
             System.out.println("Number of customers in the database: " + customerDao.getAll().size());
             //customerDao.add(customer);

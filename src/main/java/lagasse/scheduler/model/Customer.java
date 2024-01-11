@@ -7,6 +7,8 @@ public class Customer {
     private String address;
     private String postalCode;
     private String phone;
+
+
     ////////////////////////////////
 
     ///Foreign Keys///
@@ -27,6 +29,7 @@ public class Customer {
         this.address = address;
         this.postalCode = postalCode;
         this.phone = phone;
+
         this.divisionId = divisionId;
     }
 
@@ -69,6 +72,7 @@ public class Customer {
     public String getPhone(){
         return phone;
     }
+
 
     /**
      *

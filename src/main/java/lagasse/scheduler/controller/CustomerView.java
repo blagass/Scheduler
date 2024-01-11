@@ -99,6 +99,19 @@ public class CustomerView implements Initializable {
         customerTableView.setItems(transferCustomer);
         countryCombo.setItems(transferCountry);
 
+    }
+
+    @FXML
+    void onCountryCombo(ActionEvent event) {
+
+
 
     }
+
+    @FXML
+    void onStateCombo(ActionEvent event) {
+
+    }
+
+}
 }
