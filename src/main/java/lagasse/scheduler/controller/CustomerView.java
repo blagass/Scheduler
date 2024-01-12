@@ -18,6 +18,7 @@ import lagasse.scheduler.dao.FirstLevelDivisionDAO;
 import lagasse.scheduler.model.Country;
 import lagasse.scheduler.model.Customer;
 import lagasse.scheduler.model.FirstLevelDivision;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -61,6 +62,8 @@ public class CustomerView implements Initializable {
     @FXML
     private TableView<Customer> customerTableView;
 
+
+
     @FXML
     private Button exitBtn;
 
@@ -77,9 +80,17 @@ public class CustomerView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Transfer Lists
         ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
         ObservableList<Country>transferCountry = FXCollections.observableArrayList();
         ObservableList<FirstLevelDivision>transferDivisions = FXCollections.observableArrayList();
+
+        //Country/State
+        ObservableList<Country>usDivisions = FXCollections.observableArrayList();
+        ObservableList<Country>canadaDivisions = FXCollections.observableArrayList();
+        ObservableList<Country>ukDivisions = FXCollections.observableArrayList();
+
+
         try {
              transferCustomer.setAll(CustomerDAO.getAll());
              transferCountry.setAll(CountryDAO.getAll());
@@ -113,5 +124,9 @@ public class CustomerView implements Initializable {
 
     }
 
-}
+
+
+    @FXML
+    public void countryComboRelease(javafx.scene.input.MouseEvent mouseEvent) {
+    }
 }
