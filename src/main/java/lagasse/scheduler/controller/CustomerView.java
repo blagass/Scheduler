@@ -85,10 +85,7 @@ public class CustomerView implements Initializable {
         ObservableList<Country>transferCountry = FXCollections.observableArrayList();
         ObservableList<FirstLevelDivision>transferDivisions = FXCollections.observableArrayList();
 
-        //Country/State
-        ObservableList<Country>usDivisions = FXCollections.observableArrayList();
-        ObservableList<Country>canadaDivisions = FXCollections.observableArrayList();
-        ObservableList<Country>ukDivisions = FXCollections.observableArrayList();
+
 
 
         try {
@@ -109,6 +106,7 @@ public class CustomerView implements Initializable {
         stateCombo.setItems(transferDivisions);
         customerTableView.setItems(transferCustomer);
         countryCombo.setItems(transferCountry);
+        countryCombo.getSelectionModel().selectFirst();
 
     }
 
@@ -127,6 +125,24 @@ public class CustomerView implements Initializable {
 
 
     @FXML
-    public void countryComboRelease(javafx.scene.input.MouseEvent mouseEvent) {
+    public void countryComboRelease(javafx.scene.input.MouseEvent mouseEvent) throws SQLException {
+
+        //Country/State
+        ObservableList<FirstLevelDivision>usDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision>canadaDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision>ukDivisions = FXCollections.observableArrayList();
+
+        Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
+
+        usDivisions.setAll(FirstLevelDivisionDAO.getAll());
+
+       if(countryComboSelect.getCountryId() == 1){
+           stateCombo.setItems(usDivisions);
+       }
+       else{
+           System.out.println("Select a Country");
+       }
+
+
     }
 }

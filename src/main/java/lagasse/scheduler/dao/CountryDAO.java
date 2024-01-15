@@ -28,4 +28,22 @@ public class CountryDAO {
         return allCountries; // Returns the observable list
 
     }
+
+    public static ObservableList<Country> select(int divisionId) throws SQLException {
+        ObservableList<Country> selectedCountry = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM COUNTRIES WHERE Division_ID = ?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt ( 1, divisionId);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            int countryId = rs.getInt("Country_ID");
+            String countryName = rs.getString("Country");
+
+            Country country = new Country(countryId,countryName);
+            selectedCountry.add(country);
+        }
+
+        return selectedCountry;
+    }
+
 }
