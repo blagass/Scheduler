@@ -109,11 +109,35 @@ public class CustomerView implements Initializable {
     }
 
     @FXML
-    void onCountryCombo(ActionEvent event) {
+    void onCountryCombo(ActionEvent event) throws SQLException {
+        //Country/State
+
+        ObservableList<FirstLevelDivision>usDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision>canadaDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision>ukDivisions = FXCollections.observableArrayList();
+
+        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
+        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
+        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
 
 
+
+        Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
+        if(countryComboSelect.getCountryId() == 1){
+            stateCombo.setItems(usDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else if (countryComboSelect.getCountryId() == 2) {
+            stateCombo.setItems(canadaDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else if (countryComboSelect.getCountryId() == 3) {
+            stateCombo.setItems(ukDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else{
+            System.out.println("Select a Country");
+        }
 
     }
+
 
     @FXML
     void onStateCombo(ActionEvent event) {
