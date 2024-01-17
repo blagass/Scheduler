@@ -85,9 +85,6 @@ public class CustomerView implements Initializable {
         ObservableList<Country>transferCountry = FXCollections.observableArrayList();
         ObservableList<FirstLevelDivision>transferDivisions = FXCollections.observableArrayList();
 
-
-
-
         try {
              transferCustomer.setAll(CustomerDAO.getAll());
              transferCountry.setAll(CountryDAO.getAll());
@@ -107,6 +104,7 @@ public class CustomerView implements Initializable {
         customerTableView.setItems(transferCustomer);
         countryCombo.setItems(transferCountry);
         countryCombo.getSelectionModel().selectFirst();
+        stateCombo.getSelectionModel().selectFirst();
 
     }
 
@@ -125,24 +123,33 @@ public class CustomerView implements Initializable {
 
 
     @FXML
-    public void countryComboRelease(javafx.scene.input.MouseEvent mouseEvent) throws SQLException {
+    public void countryComboRelease() throws SQLException {
 
         //Country/State
+
         ObservableList<FirstLevelDivision>usDivisions = FXCollections.observableArrayList();
         ObservableList<FirstLevelDivision>canadaDivisions = FXCollections.observableArrayList();
         ObservableList<FirstLevelDivision>ukDivisions = FXCollections.observableArrayList();
 
+        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
+        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
+        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
+
+
+
         Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
-
-        usDivisions.setAll(FirstLevelDivisionDAO.getAll());
-
        if(countryComboSelect.getCountryId() == 1){
            stateCombo.setItems(usDivisions);
-       }
-       else{
+           stateCombo.getSelectionModel().selectFirst();
+       } else if (countryComboSelect.getCountryId() == 2) {
+           stateCombo.setItems(canadaDivisions);
+           stateCombo.getSelectionModel().selectFirst();
+       } else if (countryComboSelect.getCountryId() == 3) {
+           stateCombo.setItems(ukDivisions);
+           stateCombo.getSelectionModel().selectFirst();
+       } else{
            System.out.println("Select a Country");
        }
-
 
     }
 }
