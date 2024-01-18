@@ -14,7 +14,10 @@ public class CustomerDAO{
     public static ObservableList<Customer> getAll() throws SQLException {
         JDBC.openConnection();
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM CUSTOMERS";
+        String sql = "SELECT CUSTOMERS.Customer_ID, CUSTOMERS.Customer_Name, CUSTOMERS.Address, CUSTOMERS.Postal_Code, CUSTOMERS.Phone, CUSTOMERS.Division_ID, FIRST_LEVEL_DIVISIONS.Division \n" +
+                "from CUSTOMERS \n" +
+                "INNER JOIN  FIRST_LEVEL_DIVISIONS \n" +
+                "ON CUSTOMERS.Division_ID = FIRST_LEVEL_DIVISIONS.Division_ID";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -24,6 +27,7 @@ public class CustomerDAO{
             String customerPostalCode = rs.getString("Postal_Code");
             String customerPhone = rs.getString("Phone");
             int customerDivision = rs.getInt("Division_ID");
+            int customerFld = rs.getInt("Division");
 
             Customer customer = new Customer(customerId,customerName,customerAddress,customerPostalCode,customerPhone,customerDivision);
             allCustomers.add(customer);

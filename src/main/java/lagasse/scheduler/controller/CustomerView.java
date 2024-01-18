@@ -100,8 +100,10 @@ public class CustomerView implements Initializable {
         custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         custCountryCol.setCellValueFactory(new PropertyValueFactory<>("divisionId"));
 
+
         stateCombo.setItems(transferDivisions);
         customerTableView.setItems(transferCustomer);
+
         countryCombo.setItems(transferCountry);
         countryCombo.getSelectionModel().selectFirst();
         stateCombo.getSelectionModel().selectFirst();
@@ -127,10 +129,10 @@ public class CustomerView implements Initializable {
             stateCombo.setItems(usDivisions);
             stateCombo.getSelectionModel().selectFirst();
         } else if (countryComboSelect.getCountryId() == 2) {
-            stateCombo.setItems(canadaDivisions);
+            stateCombo.setItems(ukDivisions);
             stateCombo.getSelectionModel().selectFirst();
         } else if (countryComboSelect.getCountryId() == 3) {
-            stateCombo.setItems(ukDivisions);
+            stateCombo.setItems(canadaDivisions);
             stateCombo.getSelectionModel().selectFirst();
         } else{
             System.out.println("Select a Country");

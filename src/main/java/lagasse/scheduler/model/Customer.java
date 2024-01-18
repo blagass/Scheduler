@@ -29,7 +29,6 @@ public class Customer {
         this.address = address;
         this.postalCode = postalCode;
         this.phone = phone;
-
         this.divisionId = divisionId;
     }
 
