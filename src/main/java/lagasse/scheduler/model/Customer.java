@@ -5,6 +5,10 @@ public class Customer {
     private int customerId;
     private String customerName;
     private String address;
+
+
+
+
     private String postalCode;
     private String phone;
 
@@ -44,12 +48,22 @@ public class Customer {
         return customerId;
     }
 
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+
     /**
      * customer_name Getter
      * @return customer_name
      */
     public String getCustomerName(){
         return customerName;
+    }
+
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     /**
@@ -60,6 +74,12 @@ public class Customer {
         return address;
     }
 
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
     /**
      * postal_code Getter
      * @return postal_code
@@ -67,6 +87,12 @@ public class Customer {
     public String getPostalCode(){
         return postalCode;
     }
+
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
 
     /**
      * phone Getter
@@ -77,6 +103,11 @@ public class Customer {
     }
 
 
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     /**
      *
      * @return
@@ -84,6 +115,14 @@ public class Customer {
     public int getDivisionId(){return divisionId;}
 
     public String getDivisionName(){return divisionName;}
+
+    public void setDivisionName(String divisionName) {
+        this.divisionName = divisionName;
+    }
+
+    public void setDivisionId(int divisionId) {
+        this.divisionId = divisionId;
+    }
 
 
 }

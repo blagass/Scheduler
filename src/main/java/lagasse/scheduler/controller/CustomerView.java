@@ -62,7 +62,8 @@ public class CustomerView implements Initializable {
     @FXML
     private TableView<Customer> customerTableView;
 
-
+    @FXML
+    public Customer transferCustomer;
 
     @FXML
     private Button exitBtn;
@@ -107,8 +108,8 @@ public class CustomerView implements Initializable {
         customerTableView.setItems(transferCustomer);
 
         countryCombo.setItems(transferCountry);
-        countryCombo.getSelectionModel().selectFirst();
-        stateCombo.getSelectionModel().selectFirst();
+        //countryCombo.getSelectionModel().selectFirst();
+        //stateCombo.getSelectionModel().selectFirst();
 
     }
 
@@ -155,29 +156,63 @@ public class CustomerView implements Initializable {
 
         //Country/State
 
-        ObservableList<FirstLevelDivision>usDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision>canadaDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision>ukDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision> usDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision> canadaDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision> ukDivisions = FXCollections.observableArrayList();
 
         usDivisions.setAll(FirstLevelDivisionDAO.usStates());
         canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
         ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
 
 
-
         Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
-       if(countryComboSelect.getCountryId() == 1){
-           stateCombo.setItems(usDivisions);
-           stateCombo.getSelectionModel().selectFirst();
-       } else if (countryComboSelect.getCountryId() == 2) {
-           stateCombo.setItems(canadaDivisions);
-           stateCombo.getSelectionModel().selectFirst();
-       } else if (countryComboSelect.getCountryId() == 3) {
-           stateCombo.setItems(ukDivisions);
-           stateCombo.getSelectionModel().selectFirst();
-       } else{
-           System.out.println("Select a Country");
-       }
+        if (countryComboSelect.getCountryId() == 1) {
+            stateCombo.setItems(usDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else if (countryComboSelect.getCountryId() == 2) {
+            stateCombo.setItems(canadaDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else if (countryComboSelect.getCountryId() == 3) {
+            stateCombo.setItems(ukDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else {
+            System.out.println("Select a Country");
+        }
+    }
+
+    @FXML
+    void onSaveNewCustomer(ActionEvent event) {
+        Customer customer = new Customer(-0,"test","101 street","1234","22354", 1,"canadas");
+
+
+
+        String customerName = customerNameField.getText();
+        String customerAddress = customerAddressField.getText();
+        String customerPostal = customerPostalCodeField.getText();
+        String customerPhone = customerPHoneField.getText();
+        int customerDivisionId  = countryCombo.getSelectionModel().getSelectedItem().getCountryId();
+        String customerDivisionName = stateCombo.getSelectionModel().getSelectedItem().toString();
+        System.out.println(customerName);
+
+
+        customer.setCustomerName(customerName);
+        customer.setAddress(customerAddress);
+        customer.setPostalCode(customerPostal);
+        customer.setPhone(customerPhone);
+        customer.setDivisionId(customerDivisionId);
+        customer.setDivisionName(customerDivisionName);
+        System.out.println(customerName);
+
+
+    System.out.println(customer.getCustomerName());
+    System.out.println(customer.getCustomerId());
+        System.out.println(customer.getAddress());
+        System.out.println(customer.getPostalCode());
+        System.out.println(customer.getPhone());
+        System.out.println(customer.getDivisionId());
+        System.out.println(customer.getDivisionName());
 
     }
-}
+
+
+    }
