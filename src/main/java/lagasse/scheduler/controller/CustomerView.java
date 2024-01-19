@@ -181,7 +181,7 @@ public class CustomerView implements Initializable {
     }
 
     @FXML
-    void onSaveNewCustomer(ActionEvent event) {
+    void onSaveNewCustomer(ActionEvent event) throws SQLException {
         Customer customer = new Customer(-0,"test","101 street","1234","22354", 1,"canadas");
 
 
@@ -191,7 +191,7 @@ public class CustomerView implements Initializable {
         String customerPostal = customerPostalCodeField.getText();
         String customerPhone = customerPHoneField.getText();
         int customerDivisionId  = countryCombo.getSelectionModel().getSelectedItem().getCountryId();
-        String customerDivisionName = stateCombo.getSelectionModel().getSelectedItem().toString();
+        //String customerDivisionName = stateCombo.getSelectionModel().getSelectedItem().toString();
         System.out.println(customerName);
 
 
@@ -200,7 +200,7 @@ public class CustomerView implements Initializable {
         customer.setPostalCode(customerPostal);
         customer.setPhone(customerPhone);
         customer.setDivisionId(customerDivisionId);
-        customer.setDivisionName(customerDivisionName);
+        //customer.setDivisionName(customerDivisionName);
         System.out.println(customerName);
 
 
@@ -210,7 +210,26 @@ public class CustomerView implements Initializable {
         System.out.println(customer.getPostalCode());
         System.out.println(customer.getPhone());
         System.out.println(customer.getDivisionId());
-        System.out.println(customer.getDivisionName());
+        //System.out.println(customer.getDivisionName());
+
+        transferCustomer  = customer;
+        CustomerDAO customerDao = new CustomerDAO();
+            System.out.println("Number of customers in the database: " + customerDao.getAll().size());
+            customerDao.add(customer);
+
+    }
+
+    @FXML
+    void onDeleteCustomer(ActionEvent event) throws SQLException {
+        Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+        CustomerDAO customerDao = new CustomerDAO();
+        System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
+        customerDao.delete(selectedCustomer.getCustomerId());
+        System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
+
+        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
+        allCustomers.setAll(CustomerDAO.getAll());
+        customerTableView.setItems(allCustomers);
 
     }
 
