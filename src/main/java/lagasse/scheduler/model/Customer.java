@@ -8,6 +8,9 @@ public class Customer {
     private String postalCode;
     private String phone;
 
+    private String divisionName;
+
+
 
     ////////////////////////////////
 
@@ -23,13 +26,14 @@ public class Customer {
      * @param postalCode
      * @param phone
      */
-    public Customer(int customerId, String customerName, String address, String postalCode, String phone, int divisionId) {
+    public Customer(int customerId, String customerName, String address, String postalCode, String phone, int divisionId,String divisionName) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.address = address;
         this.postalCode = postalCode;
         this.phone = phone;
         this.divisionId = divisionId;
+        this.divisionName = divisionName;
     }
 
     /**
@@ -78,4 +82,8 @@ public class Customer {
      * @return
      */
     public int getDivisionId(){return divisionId;}
+
+    public String getDivisionName(){return divisionName;}
+
+
 }

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lagasse.scheduler.controller.CustomerView;
 import lagasse.scheduler.model.Customer;
+import lagasse.scheduler.model.FirstLevelDivision;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,13 +12,15 @@ import java.sql.SQLException;
 
 public class CustomerDAO{
 
+
     public static ObservableList<Customer> getAll() throws SQLException {
         JDBC.openConnection();
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
-        String sql = "SELECT CUSTOMERS.Customer_ID, CUSTOMERS.Customer_Name, CUSTOMERS.Address, CUSTOMERS.Postal_Code, CUSTOMERS.Phone, CUSTOMERS.Division_ID \n" +
+
+        String sql = "SELECT CUSTOMERS.Customer_ID, CUSTOMERS.Customer_Name, CUSTOMERS.Address, CUSTOMERS.Postal_Code, CUSTOMERS.Phone, CUSTOMERS.Division_ID, FIRST_LEVEL_DIVISIONS.Division \n" +
                 "from CUSTOMERS \n" +
                 "INNER JOIN  FIRST_LEVEL_DIVISIONS \n" +
-                "ON CUSTOMERS.Division_ID = FIRST_LEVEL_DIVISIONS.Division_ID";
+                "ON CUSTOMERS.Division_ID = FIRST_LEVEL_DIVISIONS.Division_ID"; //edited last
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -27,12 +30,16 @@ public class CustomerDAO{
             String customerPostalCode = rs.getString("Postal_Code");
             String customerPhone = rs.getString("Phone");
             int customerDivision = rs.getInt("Division_ID");
+            String customerDivisionName = rs.getString("Division");
 
-            Customer customer = new Customer(customerId,customerName,customerAddress,customerPostalCode,customerPhone,customerDivision);
+
+            Customer customer = new Customer(customerId,customerName,customerAddress,customerPostalCode,customerPhone,customerDivision,customerDivisionName);
             allCustomers.add(customer);
+
 
         }
         return allCustomers; // Returns the observable list
+
 
     }
 

@@ -99,6 +99,8 @@ public class CustomerView implements Initializable {
         custPostalCol.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         custCountryCol.setCellValueFactory(new PropertyValueFactory<>("divisionId"));
+        custStateCol.setCellValueFactory(new PropertyValueFactory<>("divisionName"));
+
 
 
         stateCombo.setItems(transferDivisions);
