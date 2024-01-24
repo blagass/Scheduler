@@ -1,4 +1,5 @@
 package lagasse.scheduler.model;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Appointment {
@@ -12,8 +13,10 @@ public class Appointment {
     private LocalDateTime end;
     ////////////////////////////////
 
-    ///Foriegn Keys///
+    ///Foreign Keys///
     public int customerId;
+
+
     public int userId;
     public int contactId;
     ////////////////////////////////
@@ -28,7 +31,7 @@ public class Appointment {
      * @param start
      * @param end
      */
-    public Appointment(int appointmentId, String title, String description, String location, String type, LocalDateTime start, LocalDateTime end) {
+    public Appointment(int appointmentId, String title, String description, String location, String type, LocalDateTime start, LocalDateTime end,int customerId,int userId,int contactId) {
         this.appointmentId = appointmentId;
         this.title = title;
         this.description = description;
@@ -36,6 +39,9 @@ public class Appointment {
         this.type = type;
         this.start = start;
         this.end = end;
+        this.customerId = customerId;
+        this.userId = userId;
+        this.contactId = contactId;
     }
 
     /**
@@ -83,15 +89,41 @@ public class Appointment {
      *
      * @return start
      */
-    public LocalDateTime getStart(){
-        return start;
+    public Timestamp getStart(){
+        return null;
     }
+
 
     /**
      * end Getter
      * @return end
      */
-    public LocalDateTime getEnd(){
-        return end;
+    public Timestamp getEnd(){
+        return null;
     }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(int contactId) {
+        this.contactId = contactId;
+    }
+
 }

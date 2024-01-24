@@ -20,7 +20,7 @@ public class CustomerDAO{
         String sql = "SELECT CUSTOMERS.Customer_ID, CUSTOMERS.Customer_Name, CUSTOMERS.Address, CUSTOMERS.Postal_Code, CUSTOMERS.Phone, CUSTOMERS.Division_ID, FIRST_LEVEL_DIVISIONS.Division \n" +
                 "from CUSTOMERS \n" +
                 "INNER JOIN  FIRST_LEVEL_DIVISIONS \n" +
-                "ON CUSTOMERS.Division_ID = FIRST_LEVEL_DIVISIONS.Division_ID"; //edited last
+                "ON CUSTOMERS.Division_ID = FIRST_LEVEL_DIVISIONS.Division_ID";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

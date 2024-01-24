@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="640.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lagasse.scheduler.controller.AppointmentView">
    <children>
       <VBox prefHeight="640.0" prefWidth="1000.0">
@@ -41,10 +40,18 @@
                   </GridPane>
                </children>
             </StackPane>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="appointmentTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn fx:id="appIdCol" prefWidth="75.0" text="Appointment Id" />
+                <TableColumn fx:id="appTitleCol" prefWidth="75.0" text="Title" />
+                <TableColumn fx:id="appDescriptionCol" prefWidth="95.0" text="Description" />
+                  <TableColumn fx:id="appLocationCol" minWidth="0.0" prefWidth="98.0" text="Location" />
+                  <TableColumn fx:id="appTypeCol" prefWidth="82.0" text="Type" />
+                  <TableColumn fx:id="appStartCol" prefWidth="106.0" text="Start" />
+                  <TableColumn fx:id="appEndCol" prefWidth="94.0" text="End" />
+                  <TableColumn fx:id="appCustomerCol" prefWidth="99.0" text="Customer" />
+                  <TableColumn fx:id="appUserCol" prefWidth="83.0" text="User" />
+                  <TableColumn fx:id="appContactCol" prefWidth="131.0" text="Contact" />
               </columns>
             </TableView>
             <Pane prefHeight="200.0" prefWidth="200.0">
