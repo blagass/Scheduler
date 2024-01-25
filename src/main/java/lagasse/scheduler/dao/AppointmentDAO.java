@@ -27,14 +27,18 @@ public class AppointmentDAO {
             String appointmentDescription = rs.getString("Description");
             String appointmentLocation = rs.getString("Location");
             String appointmentType = rs.getString("Type");
-            int appointmentStart = rs.getInt("Start");
+            String appointmentStart = rs.getString("Start");
             String appointmentEnd = rs.getString("End");
             int appointmentCustomerId = rs.getInt("Customer_ID");
             int appointmentUserId = rs.getInt("User_ID");
             int contactId = rs.getInt("Contact_ID");
 
+            LocalDateTime startLtd = LocalDateTime.parse(appointmentStart);
+            LocalDateTime endLtd = LocalDateTime.parse(appointmentEnd);
 
-            Appointment appointment = new Appointment(appointmentId,appointmentTitle,appointmentDescription,appointmentLocation,appointmentType, appointmentStart,appointmentEnd,appointmentCustomerId,appointmentUserId,contactId);
+
+
+            Appointment appointment = new Appointment(appointmentId,appointmentTitle,appointmentDescription,appointmentLocation,appointmentType, startLtd,endLtd,appointmentCustomerId,appointmentUserId,contactId);
             allAppointments.add(appointment);
 
 

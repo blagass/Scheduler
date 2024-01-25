@@ -92,7 +92,7 @@ public class AppointmentView implements Initializable {
         appContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
 
 
-        stateCombo.setItems(transferDivisions);
+        stateCombo.setItems(transferDivisions);// SET UP THIS SECTION TO HAVE A DATE PICKER AND TIME COMBO
         customerTableView.setItems(transferCustomer);
 
         countryCombo.setItems(transferCountry);
