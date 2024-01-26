@@ -15,7 +15,7 @@ public class AppointmentDAO {
         JDBC.openConnection();
         ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
 
-        String sql = "SELECT Title,Description,Location,Type,Start,End,Customer_ID,User_ID,Contact_ID \n" +
+        String sql = "SELECT Appointment,Title,Description,Location,Type,Start,End,Customer_ID,User_ID,Contact_ID \n" +
                 "from APPOINTMENTS \n" +
                 "INNER JOIN CUSTOMERS \n" +
                 "ON APPOINTMENTS.Customer_ID = CUSTOMERS.Customer_ID"; //FINISH THIS

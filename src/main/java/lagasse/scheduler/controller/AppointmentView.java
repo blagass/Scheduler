@@ -9,9 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lagasse.scheduler.dao.*;
@@ -54,10 +52,48 @@ public class AppointmentView implements Initializable {
     private TableColumn<?, ?> appUserCol;
 
     @FXML
-    private TableView<?> appointmentTable;
+    private TableView<Appointment> appointmentTable;
+
+    @FXML
+    private TextField appIdField;
+
+
+    @FXML
+    private TextField contactField;
+
+    @FXML
+    private TextField customerIdField;
+
+    @FXML
+    private TextField descriptionField;
+
+    @FXML
+    private ComboBox<?> endCombo;
+
+    @FXML
+    private DatePicker endDatePicker;
 
     @FXML
     private Button exitBtn;
+
+    @FXML
+    private TextField locationField;
+
+    @FXML
+    private ComboBox<?> startCombo;
+
+    @FXML
+    private DatePicker startDatePicker;
+
+    @FXML
+    private PasswordField titleField;
+
+    @FXML
+    private TextField typeField;
+
+    @FXML
+    private TextField userIdField;
+
 
     @FXML
     void onExitBtn(ActionEvent event) throws IOException {
@@ -68,16 +104,19 @@ public class AppointmentView implements Initializable {
         window.show();
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Customer> transferCustomer = FXCollections.observableArrayList();
         ObservableList<User>transferUser = FXCollections.observableArrayList();
         ObservableList<Contact>transferContact = FXCollections.observableArrayList();
+        ObservableList<Appointment>transferAppointment = FXCollections.observableArrayList();
 
         try {
             transferCustomer.setAll(CustomerDAO.getAll());
             transferUser.setAll(UserDAO.getAll());
             transferContact.setAll(ContactDAO.getAll());
+            transferAppointment.setAll(AppointmentDAO.getAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -93,8 +132,40 @@ public class AppointmentView implements Initializable {
 
 
         stateCombo.setItems(transferDivisions);// SET UP THIS SECTION TO HAVE A DATE PICKER AND TIME COMBO
-        customerTableView.setItems(transferCustomer);
+        appointmentTable.setItems(transferAppointment);
 
         countryCombo.setItems(transferCountry);
     }
+
+
+    @FXML
+    void onEndCombo(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onEndDatePicker(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onStartCombo(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onStartDatePicker(ActionEvent event) {
+
+    }
+    @FXML
+    void onAppointmentEdit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onAppointmentSave(ActionEvent event) {
+
+    }
+
+
 }
