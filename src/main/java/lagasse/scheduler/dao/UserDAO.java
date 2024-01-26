@@ -17,7 +17,7 @@ public class UserDAO {
         JDBC.openConnection();
         ObservableList<User> allUsers = FXCollections.observableArrayList();
 
-        String sql = "SELECT * USER";
+        String sql = "SELECT * FROM USERS";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

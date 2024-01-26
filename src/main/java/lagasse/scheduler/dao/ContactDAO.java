@@ -14,7 +14,7 @@ public class ContactDAO {
         JDBC.openConnection();
         ObservableList<Contact> allContacts = FXCollections.observableArrayList();
 
-        String sql = "SELECT * CONTACTS";
+        String sql = "SELECT * FROM CONTACTS";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

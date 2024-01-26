@@ -9,16 +9,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AppointmentDAO {
     public static ObservableList<Appointment> getAll() throws SQLException {
         JDBC.openConnection();
+        //DateTimeFormatter dtf = DateTimeFormatter.; // use this DTF to convert for parse
         ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
 
-        String sql = "SELECT Appointment,Title,Description,Location,Type,Start,End,Customer_ID,User_ID,Contact_ID \n" +
-                "from APPOINTMENTS \n" +
-                "INNER JOIN CUSTOMERS \n" +
-                "ON APPOINTMENTS.Customer_ID = CUSTOMERS.Customer_ID"; //FINISH THIS
+        String sql = "SELECT Appointment_ID,Title,Description,Location,Type,Start,End,Customer_ID,User_ID,Contact_ID \n" +
+                "from APPOINTMENTS";
+//                "INNER JOIN CUSTOMERS \n" +
+//                "ON APPOINTMENTS.Customer_ID = CUSTOMERS.Customer_ID"; //FINISH THIS
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
