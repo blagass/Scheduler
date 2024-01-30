@@ -20,7 +20,7 @@ public class AppointmentDAO {
         String sql = "SELECT Appointment_ID,Title,Description,Location,Type,Start,End,Customer_ID,User_ID,Contact_ID \n" +
                 "from APPOINTMENTS";
 //                "INNER JOIN CUSTOMERS \n" +
-//                "ON APPOINTMENTS.Customer_ID = CUSTOMERS.Customer_ID"; //FINISH THIS
+//                "ON APPOINTMENTS.Customer_ID = CUSTOMERS.Customer_ID";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -29,7 +29,7 @@ public class AppointmentDAO {
             String appointmentDescription = rs.getString("Description");
             String appointmentLocation = rs.getString("Location");
             String appointmentType = rs.getString("Type");
-            String appointmentStart = rs.getString("Start");
+            String appointmentStart = rs.getString("Start"); //getTimestap /setTimestamp
             String appointmentEnd = rs.getString("End");
             int appointmentCustomerId = rs.getInt("Customer_ID");
             int appointmentUserId = rs.getInt("User_ID");
