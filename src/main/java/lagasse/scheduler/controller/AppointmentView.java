@@ -12,12 +12,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import lagasse.scheduler.dao.*;
 import lagasse.scheduler.model.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class AppointmentView implements Initializable {
@@ -40,7 +44,7 @@ public class AppointmentView implements Initializable {
     private TableColumn<?, ?> appLocationCol;
 
     @FXML
-    private TableColumn<?, ?> appStartCol;
+    private TableColumn<Appointment, LocalDateTime> appStartCol;
 
     @FXML
     private TableColumn<?, ?> appTitleCol;
@@ -124,15 +128,19 @@ public class AppointmentView implements Initializable {
         appIdCol.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
         appTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         appDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        appLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
         appTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
         appStartCol.setCellValueFactory(new PropertyValueFactory<>("start"));
+        appEndCol.setCellValueFactory(new PropertyValueFactory<>("end"));
         appCustomerCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         appUserCol.setCellValueFactory(new PropertyValueFactory<>("userId"));
         appContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
 
+       // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // use this DTF to convert for parse
+
 
 //        startCombo.setItems(transferDivisions);// SET UP THIS SECTION TO HAVE A DATE PICKER AND TIME COMBO
-//        appointmentTable.setItems(transferAppointment);
+        appointmentTable.setItems(transferAppointment);
 //
 //        endCombo.setItems(transferCountry);
     }

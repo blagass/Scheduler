@@ -89,8 +89,8 @@ public class Appointment {
      *
      * @return start
      */
-    public Timestamp getStart(){
-        return null;
+    public LocalDateTime getStart(){
+        return this.start;
     }
 
 
@@ -98,8 +98,8 @@ public class Appointment {
      * end Getter
      * @return end
      */
-    public Timestamp getEnd(){
-        return null;
+    public LocalDateTime getEnd(){
+        return this.end;
     }
 
     public int getCustomerId() {

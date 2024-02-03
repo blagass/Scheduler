@@ -8,13 +8,14 @@ import lagasse.scheduler.model.Customer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class AppointmentDAO {
     public static ObservableList<Appointment> getAll() throws SQLException {
         JDBC.openConnection();
-        //DateTimeFormatter dtf = DateTimeFormatter.; // use this DTF to convert for parse
+        //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // use this DTF to convert for parse
         ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
 
         String sql = "SELECT Appointment_ID,Title,Description,Location,Type,Start,End,Customer_ID,User_ID,Contact_ID \n" +
@@ -29,18 +30,20 @@ public class AppointmentDAO {
             String appointmentDescription = rs.getString("Description");
             String appointmentLocation = rs.getString("Location");
             String appointmentType = rs.getString("Type");
-            String appointmentStart = rs.getString("Start"); //getTimestap /setTimestamp
-            String appointmentEnd = rs.getString("End");
+            LocalDateTime appointmentStart = rs.getTimestamp("Start").toLocalDateTime();
+            LocalDateTime appointmentEnd = rs.getTimestamp("End").toLocalDateTime();
             int appointmentCustomerId = rs.getInt("Customer_ID");
             int appointmentUserId = rs.getInt("User_ID");
             int contactId = rs.getInt("Contact_ID");
 
-            LocalDateTime startLtd = LocalDateTime.parse(appointmentStart);
-            LocalDateTime endLtd = LocalDateTime.parse(appointmentEnd);
 
+            //LocalDateTime start = LocalDateTime.parse(appointmentStart,dtf);
 
+            //appointmentStart.format(dtf);
 
-            Appointment appointment = new Appointment(appointmentId,appointmentTitle,appointmentDescription,appointmentLocation,appointmentType, startLtd,endLtd,appointmentCustomerId,appointmentUserId,contactId);
+            System.out.println(appointmentStart);
+            Appointment appointment = new Appointment(appointmentId,appointmentTitle,appointmentDescription,appointmentLocation,appointmentType, appointmentStart,appointmentEnd,appointmentCustomerId,appointmentUserId,contactId);
+            System.out.println(appointment.getStart());
             allAppointments.add(appointment);
 
 
@@ -57,8 +60,9 @@ public class AppointmentDAO {
         ps.setString(2,appointment.getDescription());
         ps.setString(3,appointment.getLocation());
         ps.setString(4,appointment.getType());
-        ps.setTimestamp(5,appointment.getStart());
-        ps.setTimestamp(6,appointment.getEnd());
+        //ps.setTimestamp(5,appointment.getStart());
+        //ps.setTimestamp(6,appointment.getEnd()); //work on these after you have the first part of appointments figured out
+
         ps.setInt(7, appointment.getCustomerId());
         ps.setInt(8,appointment.getUserId());
         ps.setInt(9,appointment.getContactId());
