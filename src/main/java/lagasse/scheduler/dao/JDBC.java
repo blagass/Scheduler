@@ -26,7 +26,7 @@ public abstract class JDBC {
         try{
             Class.forName(driver);
             connection = DriverManager.getConnection(jdbUrl,userName,password);
-            System.out.println("Connection Successful");
+           // System.out.println("Connection Successful");
 
         }
         catch(Exception e){

@@ -5,14 +5,14 @@ import javafx.collections.ObservableList;
 import lagasse.scheduler.model.Appointment;
 import lagasse.scheduler.model.Customer;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.sql.*;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
 
 public class AppointmentDAO {
+    public LocalTime transferTime;
+    public LocalDate transferDate;
     public static ObservableList<Appointment> getAll() throws SQLException {
         JDBC.openConnection();
         //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // use this DTF to convert for parse
@@ -37,13 +37,17 @@ public class AppointmentDAO {
             int contactId = rs.getInt("Contact_ID");
 
 
-            //LocalDateTime start = LocalDateTime.parse(appointmentStart,dtf);
+            //Create current system zone
+            ZoneId currentZone = ZoneId.of(TimeZone.getDefault().getID());
+            System.out.println(currentZone);
 
-            //appointmentStart.format(dtf);
-
+            //Create ZonedDateTime
+            ZonedDateTime zdt = appointmentStart.atZone(currentZone);
+            ZonedDateTime currentToLocalZDT = zdt.withZoneSameInstant(currentZone);
+            appointmentStart = currentToLocalZDT.toLocalDateTime();
             System.out.println(appointmentStart);
+
             Appointment appointment = new Appointment(appointmentId,appointmentTitle,appointmentDescription,appointmentLocation,appointmentType, appointmentStart,appointmentEnd,appointmentCustomerId,appointmentUserId,contactId);
-            System.out.println(appointment.getStart());
             allAppointments.add(appointment);
 
 
@@ -54,15 +58,20 @@ public class AppointmentDAO {
     }
 
     public int add(Appointment appointment) throws SQLException{
+        LocalDateTime start = appointment.getStart();
+        Timestamp startTimeStamp = Timestamp.valueOf(start);
+
+        LocalDateTime end = appointment.getEnd();
+        Timestamp endTimeStamp = Timestamp.valueOf(end);
+
         String sql = "INSERT INTO APPOINTMENTS(Title,Description,Location,Type,Start,End,Customer_ID,User_ID,Contact_ID) VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ps.setString(1,appointment.getTitle());
         ps.setString(2,appointment.getDescription());
         ps.setString(3,appointment.getLocation());
         ps.setString(4,appointment.getType());
-        //ps.setTimestamp(5,appointment.getStart());
-        //ps.setTimestamp(6,appointment.getEnd()); //work on these after you have the first part of appointments figured out
-
+        ps.setTimestamp(5,startTimeStamp);
+        ps.setTimestamp(6,endTimeStamp); //work on these after you have the first part of appointments figured out
         ps.setInt(7, appointment.getCustomerId());
         ps.setInt(8,appointment.getUserId());
         ps.setInt(9,appointment.getContactId());

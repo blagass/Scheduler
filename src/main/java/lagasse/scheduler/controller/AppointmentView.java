@@ -136,7 +136,7 @@ public class AppointmentView implements Initializable {
         appUserCol.setCellValueFactory(new PropertyValueFactory<>("userId"));
         appContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
 
-       // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // use this DTF to convert for parse
+        //Get help making a lambda for all the times available to show up on the start/end times.
 
 
 //        startCombo.setItems(transferDivisions);// SET UP THIS SECTION TO HAVE A DATE PICKER AND TIME COMBO
