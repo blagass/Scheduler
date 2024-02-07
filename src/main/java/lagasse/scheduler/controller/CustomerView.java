@@ -68,6 +68,9 @@ public class CustomerView implements Initializable {
     @FXML
     private Button exitBtn;
 
+    @FXML
+    private Button saveUpdateButton;
+
 
     @FXML
     void onExitBtn(ActionEvent event) throws IOException {
@@ -234,5 +237,41 @@ public class CustomerView implements Initializable {
 
     }
 
+
+    @FXML
+    void onEditCustomer(ActionEvent event) throws SQLException {
+        //Set Save button visible
+        saveUpdateButton.setVisible(true);
+
+        //Create new Customer and assign it the selected Customer in the tables
+        Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+
+        customerNameField.setText(selectedCustomer.getCustomerName());
+        customerAddressField.setText(selectedCustomer.getAddress());
+        customerPostalCodeField.setText(selectedCustomer.getPostalCode());
+        customerPHoneField.setText(selectedCustomer.getPhone());
+
+        int countryId = CustomerDAO.getCountryId(selectedCustomer.getDivisionId());
+        String countryName = CustomerDAO.getCountryName(selectedCustomer.getDivisionId());
+
+        if(countryId == 1){
+            countryCombo.getSelectionModel().selectFirst();
+            stateCombo.setItems(usDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else if (countryId == 2) {
+            countryCombo.getSelectionModel().select(CustomerDAO.getCountryName(selectedCustomer.getDivisionId())); //go to bed, too tired to figure out. Should be easy tomorrow :D
+            stateCombo.setItems(ukDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else if (countryId == 3) {
+            stateCombo.setItems(canadaDivisions);
+            stateCombo.getSelectionModel().selectFirst();
+        } else{
+            System.out.println("Select a Country");
+        }
+
+        int divisionId = selectedCustomer.getDivisionId();
+        countryCombo.setValue(selectedCountry);
+
+    }
 
     }

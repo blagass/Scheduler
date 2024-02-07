@@ -2,9 +2,7 @@ package lagasse.scheduler.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import lagasse.scheduler.controller.CustomerView;
 import lagasse.scheduler.model.Customer;
-import lagasse.scheduler.model.FirstLevelDivision;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,5 +63,32 @@ public class CustomerDAO{
         ps.setInt(1, customerId);
         int rowsAffected = ps.executeUpdate();
         return rowsAffected;
+    }
+
+    public static int getCountryId(int divisionId) throws SQLException {
+        String sql = "SELECT * FROM first_level_divisions WHERE Division_ID =?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String customerDivisionName = null;
+        int countryId = 0;
+        while (rs.next()) {
+            countryId = rs.getInt("Country_ID");
+
+        }
+        return countryId;
+    }
+
+    public static String getCountryName(int divisionId) throws SQLException {
+        String sql = "SELECT * FROM first_level_divisions WHERE Division_ID =?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String customerDivisionName = null;
+        int countryId = 0;
+        String countryName = null;
+        while (rs.next()) {
+            countryName = rs.getString("Country");
+
+        }
+        return countryName;
     }
 }

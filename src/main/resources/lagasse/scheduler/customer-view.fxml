@@ -79,14 +79,14 @@
                         </Pane>
                         <ComboBox fx:id="countryCombo" onAction="#onCountryCombo" onMouseClicked="#countryComboRelease" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                         <ComboBox fx:id="stateCombo" onAction="#onStateCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#onSaveNewCustomer" text="Save New Customer" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Button fx:id="saveUpdateButton" mnemonicParsing="false" text="Save Update" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>
             </HBox>
             <StackPane prefHeight="290.0" prefWidth="1000.0">
                <children>
-                  <TableView fx:id="customerTableView" prefHeight="255.0" prefWidth="1000.0">
+                  <TableView fx:id="customerTableView" prefHeight="255.0" prefWidth="561.0">
                     <columns>
                       <TableColumn fx:id="custIdCol" prefWidth="89.66666412353516" text="Customer ID" />
                       <TableColumn fx:id="custNameCol" prefWidth="60.333335876464844" text="Name" />
@@ -103,8 +103,10 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="186.0" layoutY="13.0" mnemonicParsing="false" onAction="#onDeleteCustomer" text="Delete Customer" />
+                        <Button layoutX="249.0" layoutY="13.0" mnemonicParsing="false" onAction="#onDeleteCustomer" text="Delete Customer" />
                         <Button fx:id="exitBtn" layoutX="62.0" layoutY="13.0" mnemonicParsing="false" onAction="#onExitBtn" text="Back to Main" />
+                        <Button layoutX="371.0" layoutY="13.0" mnemonicParsing="false" onAction="#onEditCustomer" text="Edit Customer" />
+                        <Button layoutX="489.0" layoutY="13.0" mnemonicParsing="false" onAction="#onSaveNewCustomer" text="Save New Customer" />
                      </children>
                   </Pane>
                </children>
