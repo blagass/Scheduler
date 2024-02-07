@@ -12,16 +12,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import lagasse.scheduler.dao.*;
 import lagasse.scheduler.model.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class AppointmentView implements Initializable {
@@ -72,7 +70,7 @@ public class AppointmentView implements Initializable {
     private TextField descriptionField;
 
     @FXML
-    private ComboBox<?> endCombo;
+    private ComboBox<LocalTime> endCombo;
 
     @FXML
     private DatePicker endDatePicker;
@@ -84,7 +82,7 @@ public class AppointmentView implements Initializable {
     private TextField locationField;
 
     @FXML
-    private ComboBox<?> startCombo;
+    private ComboBox<LocalTime> startCombo;
 
     @FXML
     private DatePicker startDatePicker;
@@ -97,6 +95,9 @@ public class AppointmentView implements Initializable {
 
     @FXML
     private TextField userIdField;
+
+    @FXML
+    private ComboBox<Contact> contactCombo;
 
 
     @FXML
@@ -115,6 +116,25 @@ public class AppointmentView implements Initializable {
         ObservableList<User>transferUser = FXCollections.observableArrayList();
         ObservableList<Contact>transferContact = FXCollections.observableArrayList();
         ObservableList<Appointment>transferAppointment = FXCollections.observableArrayList();
+
+        //Set up Time combo
+        ObservableList<LocalTime> hours = FXCollections.observableArrayList();
+
+        // Lambda to populate the lis
+        Runnable addHours = () -> {
+            for (int hour = 0; hour < 24; hour++) {
+                for (int minute = 0; minute < 60; minute += 30) {
+                    hours.add(LocalTime.of(hour, minute));
+                }
+            }
+        };
+
+
+        addHours.run();
+
+        // Printing the contents of the ObservableList
+        System.out.println("Hours in the list: " + hours);
+
 
         try {
             transferCustomer.setAll(CustomerDAO.getAll());
@@ -136,13 +156,14 @@ public class AppointmentView implements Initializable {
         appUserCol.setCellValueFactory(new PropertyValueFactory<>("userId"));
         appContactCol.setCellValueFactory(new PropertyValueFactory<>("contactId"));
 
-        //Get help making a lambda for all the times available to show up on the start/end times.
-
-
-//        startCombo.setItems(transferDivisions);// SET UP THIS SECTION TO HAVE A DATE PICKER AND TIME COMBO
+        //Set up combo boxes
+        startCombo.setItems(hours);
+        endCombo.setItems(hours);
         appointmentTable.setItems(transferAppointment);
-//
-//        endCombo.setItems(transferCountry);
+
+
+        contactCombo.setItems(transferContact);
+
     }
 
 
@@ -172,6 +193,9 @@ public class AppointmentView implements Initializable {
 
     @FXML
     void onAppointmentSave(ActionEvent event) {
+    String title = titleField.getText();
+    String description = descriptionField.getText();
+    String location = locationField.getText();
 
     }
 

@@ -126,4 +126,6 @@ public class Appointment {
         this.contactId = contactId;
     }
 
+
+
 }

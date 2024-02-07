@@ -43,4 +43,9 @@ public class Contact {
     public String getContactEmail() {
         return contactEmail;
     }
+
+    @Override
+    public String toString(){
+        return (contactName);
+    }
 }

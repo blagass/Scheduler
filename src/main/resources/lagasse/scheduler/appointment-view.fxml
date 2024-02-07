@@ -68,16 +68,16 @@
                         <Label text="Start Time" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                         <DatePicker fx:id="startDatePicker" onAction="#onStartDatePicker" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                         <ComboBox fx:id="startCombo" onAction="#onStartCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                        <TextField fx:id="appIdField" GridPane.columnIndex="1" />
+                        <TextField fx:id="appIdField" disable="true" GridPane.columnIndex="1" />
                         <PasswordField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="locationField" GridPane.columnIndex="3" />
-                        <TextField fx:id="contactField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <TextField fx:id="typeField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                         <TextField fx:id="customerIdField" GridPane.columnIndex="5" />
                         <TextField fx:id="userIdField" GridPane.columnIndex="7" />
                         <Label text="Customer ID" GridPane.columnIndex="4" />
                         <Label text="User ID" GridPane.columnIndex="6" />
+                        <ComboBox fx:id="contactCombo" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

@@ -166,6 +166,7 @@ public class CustomerView implements Initializable {
 
 
         Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
+
         if (countryComboSelect.getCountryId() == 1) {
             stateCombo.setItems(usDivisions);
             stateCombo.getSelectionModel().selectFirst();
