@@ -18,6 +18,7 @@ import lagasse.scheduler.model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
@@ -192,16 +193,49 @@ public class AppointmentView implements Initializable {
     }
 
     @FXML
-    void onAppointmentSave(ActionEvent event) {
+    void onAppointmentSave(ActionEvent event) throws SQLException {
+
+        //Observable transfer appointment list
+        ObservableList<Appointment>transferAppointment = FXCollections.observableArrayList();
+
+        int appointmentId = 0;
     String title = titleField.getText();
     String description = descriptionField.getText();
     String location = locationField.getText();
+    String type = typeField.getText();
+    Contact contact = contactCombo.getSelectionModel().getSelectedItem();
+    int customerId = Integer.parseInt(customerIdField.getText());
+    int userId = Integer.parseInt(userIdField.getText());
+    LocalTime startTime = startCombo.getSelectionModel().getSelectedItem();
+    LocalDate startDate = startDatePicker.getValue();
+    LocalTime endTime = endCombo.getSelectionModel().getSelectedItem();
+    LocalDate endDate = endDatePicker.getValue();
+
+    LocalDateTime startLtd = LocalDateTime.of(startDate,startTime);
+    LocalDateTime endLtd = LocalDateTime.of(endDate,endTime);
+
+    int contactId =  contact.getContactId();
+
+    Appointment appointment = new Appointment(appointmentId,title,description,location,type,startLtd, endLtd,customerId,userId,contactId);
+        System.out.println(appointment.getAppointmentId());
+
+        AppointmentDAO.add(appointment);
+        transferAppointment.setAll(AppointmentDAO.getAll());
+        appointmentTable.setItems(transferAppointment);
 
     }
 
     @FXML
-    void onAppointmentDelete(ActionEvent event) {
+    void onAppointmentDelete(ActionEvent event) throws SQLException {
+        Appointment selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
+        AppointmentDAO appointmentDAO = new AppointmentDAO();
+        System.out.println("Number of customers in the database: " + AppointmentDAO.getAll().size());
+        AppointmentDAO.delete(selectedAppointment.getAppointmentId());
+        System.out.println("Number of customers in the database: " + AppointmentDAO.getAll().size());
 
+        ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
+        allAppointments.setAll(AppointmentDAO.getAll());
+        appointmentTable.setItems(allAppointments);
     }
 
 }

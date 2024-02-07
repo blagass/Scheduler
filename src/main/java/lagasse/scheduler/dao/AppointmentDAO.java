@@ -57,7 +57,7 @@ public class AppointmentDAO {
 
     }
 
-    public int add(Appointment appointment) throws SQLException{
+    public static int add(Appointment appointment) throws SQLException{
         LocalDateTime start = appointment.getStart();
         Timestamp startTimeStamp = Timestamp.valueOf(start);
 
@@ -79,7 +79,7 @@ public class AppointmentDAO {
         return rowsAffected;
     };
 
-    public int delete(int appointmentId) throws SQLException{
+    public static int delete(int appointmentId) throws SQLException{
         String sql = "DELETE FROM APPOINTMENTS WHERE Appointment_ID = ?";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ps.setInt(1, appointmentId);
