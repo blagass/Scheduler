@@ -46,4 +46,21 @@ public class CountryDAO {
         return selectedCountry;
     }
 
+
+    public static Country getCountry(int selectedCountryId) throws SQLException {
+        String sql = "SELECT * FROM countries WHERE Country_ID =?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, selectedCountryId);
+        ResultSet rs = ps.executeQuery();
+        Country country = null;
+        while (rs.next()) {
+            int countryId = rs.getInt("Country_ID");
+            String countryName = rs.getString("Country");
+
+            country = new Country(countryId, countryName);
+
+        }
+        return country;
+    }
+
 }

@@ -78,5 +78,24 @@ public class FirstLevelDivisionDAO {
         return allCanadaStates; // Returns the observable list
     }
 
+    public static FirstLevelDivision getFld(int divisionId) throws SQLException {
+        String sql = "SELECT * FROM first_level_divisions WHERE Division_ID =?";
+        PreparedStatement ps = JDBC.connection.prepareStatement(sql);
+        ps.setInt(1, divisionId);
+        ResultSet rs = ps.executeQuery();
+
+        FirstLevelDivision fld = null;
+        while (rs.next()) {
+            int stateId = rs.getInt("Division_ID");
+            String division = rs.getString("Division");
+            int countryId = rs.getInt("Country_ID");
+
+            fld = new FirstLevelDivision(stateId, division, countryId);
+
+        }
+        return fld;
+    }
+
+
 
 }

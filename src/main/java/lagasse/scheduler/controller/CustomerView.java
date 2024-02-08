@@ -108,11 +108,12 @@ public class CustomerView implements Initializable {
 
 
         stateCombo.setItems(transferDivisions);
+        stateCombo.getSelectionModel().selectFirst();
         customerTableView.setItems(transferCustomer);
 
         countryCombo.setItems(transferCountry);
-        //countryCombo.getSelectionModel().selectFirst();
-        //stateCombo.getSelectionModel().selectFirst();
+        countryCombo.getSelectionModel().selectFirst();
+
 
     }
 
@@ -221,6 +222,21 @@ public class CustomerView implements Initializable {
             System.out.println("Number of customers in the database: " + customerDao.getAll().size());
             customerDao.add(customer);
 
+
+        //Transfer Lists
+        ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
+        ObservableList<Country>transferCountry = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision>transferDivisions = FXCollections.observableArrayList();
+
+        try {
+            transferCustomer.setAll(CustomerDAO.getAll());
+            transferCountry.setAll(CountryDAO.getAll());
+            transferDivisions.setAll(FirstLevelDivisionDAO.getAll());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        customerTableView.setItems(transferCustomer);
+
     }
 
     @FXML
@@ -246,31 +262,35 @@ public class CustomerView implements Initializable {
         //Create new Customer and assign it the selected Customer in the tables
         Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
 
+        //Set data fields
         customerNameField.setText(selectedCustomer.getCustomerName());
         customerAddressField.setText(selectedCustomer.getAddress());
         customerPostalCodeField.setText(selectedCustomer.getPostalCode());
         customerPHoneField.setText(selectedCustomer.getPhone());
 
+        //Get the Country Id
         int countryId = CustomerDAO.getCountryId(selectedCustomer.getDivisionId());
-        String countryName = CustomerDAO.getCountryName(selectedCustomer.getDivisionId());
+        System.out.println(countryId);
 
-        if(countryId == 1){
-            countryCombo.getSelectionModel().selectFirst();
-            stateCombo.setItems(usDivisions);
-            stateCombo.getSelectionModel().selectFirst();
-        } else if (countryId == 2) {
-            countryCombo.getSelectionModel().select(CustomerDAO.getCountryName(selectedCustomer.getDivisionId())); //go to bed, too tired to figure out. Should be easy tomorrow :D
-            stateCombo.setItems(ukDivisions);
-            stateCombo.getSelectionModel().selectFirst();
-        } else if (countryId == 3) {
-            stateCombo.setItems(canadaDivisions);
-            stateCombo.getSelectionModel().selectFirst();
-        } else{
-            System.out.println("Select a Country");
-        }
+        //Use the Country Id to get the Country Name
+        String countryName = CustomerDAO.getCountryName(countryId);
+        System.out.println(countryName);
 
+        //Get DivID, create a new FirstLevelDivision based on that, then set stateCombo to that object
+        //This section took me extra time to complete as it was difficult for me to reverse engineer the combo process.
         int divisionId = selectedCustomer.getDivisionId();
-        countryCombo.setValue(selectedCountry);
+
+        FirstLevelDivision fld = FirstLevelDivisionDAO.getFld(divisionId);
+        stateCombo.setValue(fld);
+
+        Country country = CountryDAO.getCountry(countryId);
+        System.out.println(country);
+
+
+        countryCombo.setValue(country);
+
+        //Add section for once the edits are done
+
 
     }
 
