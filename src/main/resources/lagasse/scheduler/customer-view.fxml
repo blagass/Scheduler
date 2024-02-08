@@ -79,7 +79,7 @@
                         </Pane>
                         <ComboBox fx:id="countryCombo" onAction="#onCountryCombo" onMouseClicked="#countryComboRelease" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                         <ComboBox fx:id="stateCombo" onAction="#onStateCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                        <Button fx:id="saveUpdateButton" mnemonicParsing="false" text="Save Update" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Button fx:id="saveUpdateButton" mnemonicParsing="false" onAction="#onSaveUpdate" text="Save Update" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>

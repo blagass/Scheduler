@@ -2,9 +2,7 @@ package lagasse.scheduler.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import lagasse.scheduler.model.Country;
 import lagasse.scheduler.model.Customer;
-import lagasse.scheduler.model.FirstLevelDivision;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,13 +56,12 @@ public class CustomerDAO{
     }
 
 
-    public int delete(int customerId) throws SQLException {
+    public static void delete(int customerId) throws SQLException {
 
         String sql = "DELETE FROM CUSTOMERS WHERE Customer_ID = ?";
         PreparedStatement ps = JDBC.connection.prepareStatement(sql);
         ps.setInt(1, customerId);
         int rowsAffected = ps.executeUpdate();
-        return rowsAffected;
     }
 
     public static int getCountryId(int divisionId) throws SQLException {
