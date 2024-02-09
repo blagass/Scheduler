@@ -138,13 +138,13 @@ public class CustomerView implements Initializable {
         Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
         if(countryComboSelect.getCountryId() == 1){
             stateCombo.setItems(usDivisions);
-            stateCombo.getSelectionModel().selectFirst();
+
         } else if (countryComboSelect.getCountryId() == 2) {
             stateCombo.setItems(ukDivisions);
-            stateCombo.getSelectionModel().selectFirst();
+
         } else if (countryComboSelect.getCountryId() == 3) {
             stateCombo.setItems(canadaDivisions);
-            stateCombo.getSelectionModel().selectFirst();
+
         } else{
             System.out.println("Select a Country");
         }
@@ -263,10 +263,19 @@ public class CustomerView implements Initializable {
         //Set Save button visible
         saveUpdateButton.setVisible(true);
 
+        //create country lists
+        ObservableList<FirstLevelDivision> usDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision> canadaDivisions = FXCollections.observableArrayList();
+        ObservableList<FirstLevelDivision> ukDivisions = FXCollections.observableArrayList();
+
+        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
+        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
+        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
+
+
         //Create new Customer and assign it the selected Customer in the tables
         Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
         currentlySelectedCustomer = selectedCustomer;
-
 
 
         //Set data fields
@@ -279,24 +288,33 @@ public class CustomerView implements Initializable {
         int countryId = CustomerDAO.getCountryId(selectedCustomer.getDivisionId());
         System.out.println(countryId);
 
-        //Use the Country Id to get the Country Name
-        String countryName = CustomerDAO.getCountryName(countryId);
-        System.out.println(countryName);
+//        //Use the Country Id to get the Country Names
+//        String countryName = CustomerDAO.getCountryName(countryId);
+//        System.out.println(countryName);
 
         //Get DivID, create a new FirstLevelDivision based on that, then set stateCombo to that object
         //This section took me extra time to complete as it was difficult for me to reverse engineer the combo process.
         int divisionId = selectedCustomer.getDivisionId();
 
-        FirstLevelDivision fld = FirstLevelDivisionDAO.getFld(divisionId);
-        stateCombo.setValue(fld);
-
         Country country = CountryDAO.getCountry(countryId);
         System.out.println(country);
 
-
+        //Set Country combo
         countryCombo.setValue(country);
 
-        //Add section for once the edits are done
+        if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 1) {
+            stateCombo.setItems(usDivisions);
+        } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 2) {
+            stateCombo.setItems(canadaDivisions);
+        } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 3) {
+            stateCombo.setItems(ukDivisions);
+        }
+
+        //Retrieve the FirstLevelDivision based on the selected customers division ID
+        FirstLevelDivision fld = FirstLevelDivisionDAO.getFld(divisionId);
+        System.out.println(fld);
+        //Set state combo
+        stateCombo.setValue(fld);
 
 
     }
