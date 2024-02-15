@@ -33,42 +33,29 @@ public class CustomerView implements Initializable {
     public TextField customerPostalCodeField;
     public TextField customerPHoneField;
     @FXML
-    private TableColumn<?, ?> custAddressCol;
-
-    @FXML
-    private TableColumn<?, ?> custCountryCol;
-
-    @FXML
-    private TableColumn<?, ?> custIdCol;
-
-    @FXML
-    private TableColumn<?, ?> custNameCol;
-
-    @FXML
-    private TableColumn<?, ?> custPhoneCol;
-
-    @FXML
-    private TableColumn<?, ?> custPostalCol;
-
-    @FXML
-    private TableColumn<?, ?> custStateCol;
-
-    @FXML
-    private ComboBox<Country> countryCombo;
-
-    @FXML
-    private ComboBox<FirstLevelDivision> stateCombo;
-
-
-    @FXML
-    private TableView<Customer> customerTableView;
-
-    @FXML
     public Customer transferCustomer;
-
     @FXML
     public Customer currentlySelectedCustomer;
-
+    @FXML
+    private TableColumn<?, ?> custAddressCol;
+    @FXML
+    private TableColumn<?, ?> custCountryCol;
+    @FXML
+    private TableColumn<?, ?> custIdCol;
+    @FXML
+    private TableColumn<?, ?> custNameCol;
+    @FXML
+    private TableColumn<?, ?> custPhoneCol;
+    @FXML
+    private TableColumn<?, ?> custPostalCol;
+    @FXML
+    private TableColumn<?, ?> custStateCol;
+    @FXML
+    private ComboBox<Country> countryCombo;
+    @FXML
+    private ComboBox<FirstLevelDivision> stateCombo;
+    @FXML
+    private TableView<Customer> customerTableView;
     @FXML
     private Button exitBtn;
 
@@ -122,71 +109,70 @@ public class CustomerView implements Initializable {
     }
 
     @FXML
-    void onCountryCombo(ActionEvent event) throws SQLException {
-        //Country/State
-
-        ObservableList<FirstLevelDivision>usDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision>canadaDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision>ukDivisions = FXCollections.observableArrayList();
-
-        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
-        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
-        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
-
-
-
-        Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
-        if(countryComboSelect.getCountryId() == 1){
-            stateCombo.setItems(usDivisions);
-
-        } else if (countryComboSelect.getCountryId() == 2) {
-            stateCombo.setItems(ukDivisions);
-
-        } else if (countryComboSelect.getCountryId() == 3) {
-            stateCombo.setItems(canadaDivisions);
-
-        } else{
-            System.out.println("Select a Country");
-        }
-
-    }
-
-
-    @FXML
     void onStateCombo(ActionEvent event) {
 
     }
 
 
+    @FXML
+    void onCountryCombo(ActionEvent event) throws SQLException {
+//        //Country/State
+//
+//        ObservableList<FirstLevelDivision>usDivisions = FXCollections.observableArrayList();
+//        ObservableList<FirstLevelDivision>canadaDivisions = FXCollections.observableArrayList();
+//        ObservableList<FirstLevelDivision>ukDivisions = FXCollections.observableArrayList();
+//
+//        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
+//        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
+//        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
+//
+//
+//
+//        Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
+//        if(countryComboSelect.getCountryId() == 1){
+//            stateCombo.setItems(usDivisions);
+//
+//        } else if (countryComboSelect.getCountryId() == 2) {
+//            stateCombo.setItems(ukDivisions);
+//
+//        } else if (countryComboSelect.getCountryId() == 3) {
+//            stateCombo.setItems(canadaDivisions);
+//
+//        } else{
+//            System.out.println("Select a Country");
+//        }
+
+    }
+
 
     @FXML
     public void countryComboRelease() throws SQLException {
-
-        //Country/State
-
-        ObservableList<FirstLevelDivision> usDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision> canadaDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision> ukDivisions = FXCollections.observableArrayList();
-
-        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
-        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
-        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
-
-
-        Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
-
-        if (countryComboSelect.getCountryId() == 1) {
-            stateCombo.setItems(usDivisions);
-            stateCombo.getSelectionModel().selectFirst();
-        } else if (countryComboSelect.getCountryId() == 2) {
-            stateCombo.setItems(canadaDivisions);
-            stateCombo.getSelectionModel().selectFirst();
-        } else if (countryComboSelect.getCountryId() == 3) {
-            stateCombo.setItems(ukDivisions);
-            stateCombo.getSelectionModel().selectFirst();
-        } else {
-            System.out.println("Select a Country");
-        }
+//
+//        //Country/State
+//
+//        ObservableList<FirstLevelDivision> usDivisions = FXCollections.observableArrayList();
+//        ObservableList<FirstLevelDivision> canadaDivisions = FXCollections.observableArrayList();
+//        ObservableList<FirstLevelDivision> ukDivisions = FXCollections.observableArrayList();
+//
+//        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
+//        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
+//        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
+//
+//
+//        Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
+//
+//        if (countryComboSelect.getCountryId() == 1) {
+//            stateCombo.setItems(usDivisions);
+//            stateCombo.getSelectionModel().selectFirst();
+//        } else if (countryComboSelect.getCountryId() == 2) {
+//            stateCombo.setItems(canadaDivisions);
+//            stateCombo.getSelectionModel().selectFirst();
+//        } else if (countryComboSelect.getCountryId() == 3) {
+//            stateCombo.setItems(ukDivisions);
+//            stateCombo.getSelectionModel().selectFirst();
+//        } else {
+//            System.out.println("Select a Country");
+//        }
     }
 
     @FXML
@@ -223,7 +209,7 @@ public class CustomerView implements Initializable {
 
         transferCustomer  = customer;
         CustomerDAO customerDao = new CustomerDAO();
-            System.out.println("Number of customers in the database: " + customerDao.getAll().size());
+            System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
             customerDao.add(customer);
 
 
@@ -288,26 +274,26 @@ public class CustomerView implements Initializable {
         int countryId = CustomerDAO.getCountryId(selectedCustomer.getDivisionId());
         System.out.println(countryId);
 
-//        //Use the Country Id to get the Country Names
-//        String countryName = CustomerDAO.getCountryName(countryId);
-//        System.out.println(countryName);
 
         //Get DivID, create a new FirstLevelDivision based on that, then set stateCombo to that object
         //This section took me extra time to complete as it was difficult for me to reverse engineer the combo process.
         int divisionId = selectedCustomer.getDivisionId();
-
         Country country = CountryDAO.getCountry(countryId);
         System.out.println(country);
+
 
         //Set Country combo
         countryCombo.setValue(country);
 
-        if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 1) {
-            stateCombo.setItems(usDivisions);
-        } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 2) {
-            stateCombo.setItems(canadaDivisions);
-        } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 3) {
-            stateCombo.setItems(ukDivisions);
+        Country selectedCountry = countryCombo.getSelectionModel().getSelectedItem();
+        if (selectedCountry != null) {
+            if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 1) {
+                stateCombo.setItems(usDivisions);
+            } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 2) {
+                stateCombo.setItems(canadaDivisions);
+            } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 3) {
+                stateCombo.setItems(ukDivisions);
+            }
         }
 
         //Retrieve the FirstLevelDivision based on the selected customers division ID
@@ -323,7 +309,10 @@ public class CustomerView implements Initializable {
     void onSaveUpdate(ActionEvent event) throws SQLException {
 
         Customer customer = new Customer(-0,"test","101 street","1234","22354", 1,"canadas");
-
+        //Table Update
+        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
+        allCustomers.setAll(CustomerDAO.getAll());
+        customerTableView.setItems(allCustomers);
 
         String customerName = customerNameField.getText();
         String customerAddress = customerAddressField.getText();
@@ -342,7 +331,7 @@ public class CustomerView implements Initializable {
         customer.setDivisionName(customerDivisionName);
 
         CustomerDAO customerDao = new CustomerDAO();
-        System.out.println("Number of customers in the database: " + customerDao.getAll().size());
+        System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
         customerDao.add(customer);
 
         //Remove old customer record
@@ -350,10 +339,10 @@ public class CustomerView implements Initializable {
         CustomerDAO.delete(deleteCustomer.getCustomerId());
         System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
 
-        //Table Update
-        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
-        allCustomers.setAll(CustomerDAO.getAll());
-        customerTableView.setItems(allCustomers);
+//        //Table Update
+//        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
+//        allCustomers.setAll(CustomerDAO.getAll());
+//        customerTableView.setItems(allCustomers);
 
     }
 
