@@ -19,7 +19,6 @@ import lagasse.scheduler.dao.FirstLevelDivisionDAO;
 import lagasse.scheduler.model.Country;
 import lagasse.scheduler.model.Customer;
 import lagasse.scheduler.model.FirstLevelDivision;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,15 +26,21 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomerView implements Initializable {
+    @FXML
+    private Button exitBtn;
 
+    @FXML
+    private Button saveUpdateButton;
+
+    //text fields
     public TextField customerNameField;
     public TextField customerAddressField;
     public TextField customerPostalCodeField;
     public TextField customerPHoneField;
+
+    //table variables
     @FXML
-    public Customer transferCustomer;
-    @FXML
-    public Customer currentlySelectedCustomer;
+    private TableView<Customer> customerTableView;
     @FXML
     private TableColumn<?, ?> custAddressCol;
     @FXML
@@ -50,44 +55,79 @@ public class CustomerView implements Initializable {
     private TableColumn<?, ?> custPostalCol;
     @FXML
     private TableColumn<?, ?> custStateCol;
+
+
+    //transfer custoemr variables
+    @FXML
+    public Customer currentlySelectedCustomer;
+    @FXML
+    public Customer transferCustomer;
+
+    //combo boxes
     @FXML
     private ComboBox<Country> countryCombo;
     @FXML
     private ComboBox<FirstLevelDivision> stateCombo;
     @FXML
-    private TableView<Customer> customerTableView;
-    @FXML
-    private Button exitBtn;
 
-    @FXML
-    private Button saveUpdateButton;
+    //Observable lists
+    private ObservableList<Customer> allCustomers;
+    private ObservableList<Country> allCountries;
+    private ObservableList<FirstLevelDivision> allDivisions;
+    private ObservableList<FirstLevelDivision> usDivisions;
+    private ObservableList<FirstLevelDivision> canadaDivisions;
+    private ObservableList<FirstLevelDivision> ukDivisions;
 
-
-    @FXML
-    void onExitBtn(ActionEvent event) throws IOException {
-        Parent customerScene = FXMLLoader.load(getClass().getResource("/lagasse/scheduler/main-view.fxml"));
-        Scene scene = new Scene(customerScene);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Transfer Lists
-        ObservableList<Customer>transferCustomer = FXCollections.observableArrayList();
-        ObservableList<Country>transferCountry = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision>transferDivisions = FXCollections.observableArrayList();
+            setCustomers();
+            setCountries();
+            setDivisions();
+            setTableColumns();
+            setCombos();
+
+    }
+
+    private void setCombos() {
+        stateCombo.setItems(allDivisions);
+        //stateCombo.getSelectionModel().selectFirst();
+        countryCombo.setItems(allCountries);
+        //countryCombo.getSelectionModel().selectFirst();
+        customerTableView.setItems(allCustomers);
+    }
+
+    private void setDivisions() {
 
         try {
-             transferCustomer.setAll(CustomerDAO.getAll());
-             transferCountry.setAll(CountryDAO.getAll());
-             transferDivisions.setAll(FirstLevelDivisionDAO.getAll());
+            allDivisions = FirstLevelDivisionDAO.getAll();
+            usDivisions = FirstLevelDivisionDAO.usStates();
+            canadaDivisions = FirstLevelDivisionDAO.canadaStates();
+            ukDivisions = FirstLevelDivisionDAO.ukStates();
+        } catch (SQLException e){
+            System.out.println("Error");
+        }
+
+    }
+
+    private void setCountries() {
+        try {
+            allCountries = CountryDAO.getAll();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    private void setCustomers() {
+        try {
+            allCustomers = CustomerDAO.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void setTableColumns(){
         custIdCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         custNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         custAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -95,23 +135,65 @@ public class CustomerView implements Initializable {
         custPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         custCountryCol.setCellValueFactory(new PropertyValueFactory<>("divisionId"));
         custStateCol.setCellValueFactory(new PropertyValueFactory<>("divisionName"));
-
-
-
-        stateCombo.setItems(transferDivisions);
-        stateCombo.getSelectionModel().selectFirst();
-        customerTableView.setItems(transferCustomer);
-
-        countryCombo.setItems(transferCountry);
-        countryCombo.getSelectionModel().selectFirst();
-
-
     }
 
     @FXML
-    void onStateCombo(ActionEvent event) {
+    void onEditCustomer(ActionEvent event) throws SQLException {
+
+        saveUpdateButton.setVisible(true);
+        Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+        int divisionId = selectedCustomer.getDivisionId();
+        if (selectedCustomer != null) {
+            currentlySelectedCustomer = selectedCustomer;
+            populateFormFields(selectedCustomer);
+            loadStatesForSelectedCountry(CustomerDAO.getCountryId(divisionId));
+        }
 
     }
+
+
+    private void populateFormFields(Customer selectedCustomer) {
+        customerNameField.setText(selectedCustomer.getCustomerName());
+        customerAddressField.setText(selectedCustomer.getAddress());
+        customerPostalCodeField.setText(selectedCustomer.getPostalCode());
+        customerPHoneField.setText(selectedCustomer.getPhone());
+    }
+
+    private void loadStatesForSelectedCountry(int countryId) {
+
+        Country country = null;
+        try {
+            country = CountryDAO.getCountry(countryId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        countryCombo.setValue(country);
+
+        Country selectedCountry = countryCombo.getSelectionModel().getSelectedItem();
+        if (selectedCountry != null) {
+            if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 1) {
+                stateCombo.setItems(usDivisions);
+            } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 2) {
+                stateCombo.setItems(canadaDivisions);
+            } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 3) {
+                stateCombo.setItems(ukDivisions);
+            }
+        }
+
+
+        Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+        int divisionId = selectedCustomer.getDivisionId();
+        FirstLevelDivision fld = null;
+        try {
+            fld = FirstLevelDivisionDAO.getFld(divisionId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        stateCombo.setValue(fld);
+    }
+
+
 
 
     @FXML
@@ -209,8 +291,8 @@ public class CustomerView implements Initializable {
 
         transferCustomer  = customer;
         CustomerDAO customerDao = new CustomerDAO();
-            System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
-            customerDao.add(customer);
+        System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
+        customerDao.add(customer);
 
 
         //Transfer Lists
@@ -240,68 +322,6 @@ public class CustomerView implements Initializable {
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
         allCustomers.setAll(CustomerDAO.getAll());
         customerTableView.setItems(allCustomers);
-
-    }
-
-
-    @FXML
-    void onEditCustomer(ActionEvent event) throws SQLException {
-        //Set Save button visible
-        saveUpdateButton.setVisible(true);
-
-        //create country lists
-        ObservableList<FirstLevelDivision> usDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision> canadaDivisions = FXCollections.observableArrayList();
-        ObservableList<FirstLevelDivision> ukDivisions = FXCollections.observableArrayList();
-
-        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
-        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
-        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
-
-
-        //Create new Customer and assign it the selected Customer in the tables
-        Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
-        currentlySelectedCustomer = selectedCustomer;
-
-
-        //Set data fields
-        customerNameField.setText(selectedCustomer.getCustomerName());
-        customerAddressField.setText(selectedCustomer.getAddress());
-        customerPostalCodeField.setText(selectedCustomer.getPostalCode());
-        customerPHoneField.setText(selectedCustomer.getPhone());
-
-        //Get the Country Id
-        int countryId = CustomerDAO.getCountryId(selectedCustomer.getDivisionId());
-        System.out.println(countryId);
-
-
-        //Get DivID, create a new FirstLevelDivision based on that, then set stateCombo to that object
-        //This section took me extra time to complete as it was difficult for me to reverse engineer the combo process.
-        int divisionId = selectedCustomer.getDivisionId();
-        Country country = CountryDAO.getCountry(countryId);
-        System.out.println(country);
-
-
-        //Set Country combo
-        countryCombo.setValue(country);
-
-        Country selectedCountry = countryCombo.getSelectionModel().getSelectedItem();
-        if (selectedCountry != null) {
-            if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 1) {
-                stateCombo.setItems(usDivisions);
-            } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 2) {
-                stateCombo.setItems(canadaDivisions);
-            } else if (countryCombo.getSelectionModel().getSelectedItem().getCountryId() == 3) {
-                stateCombo.setItems(ukDivisions);
-            }
-        }
-
-        //Retrieve the FirstLevelDivision based on the selected customers division ID
-        FirstLevelDivision fld = FirstLevelDivisionDAO.getFld(divisionId);
-        System.out.println(fld);
-        //Set state combo
-        stateCombo.setValue(fld);
-
 
     }
 
@@ -346,4 +366,19 @@ public class CustomerView implements Initializable {
 
     }
 
+    @FXML
+    void onStateCombo(ActionEvent event) {
+
     }
+
+    @FXML
+    void onExitBtn(ActionEvent event) throws IOException {
+        Parent customerScene = FXMLLoader.load(getClass().getResource("/lagasse/scheduler/main-view.fxml"));
+        Scene scene = new Scene(customerScene);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+
+    }
+
+}
