@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="640.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lagasse.scheduler.controller.CustomerView">
    <children>
@@ -23,7 +24,10 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Label text="Customers" />
+                        <Label text="Customers">
+                           <font>
+                              <Font name="Arial" size="36.0" />
+                           </font></Label>
                      </children>
                   </StackPane>
                   <GridPane prefHeight="201.0" prefWidth="784.0">
@@ -43,43 +47,46 @@
                     </rowConstraints>
                      <children>
                         <TextField fx:id="customerNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Add New Customer" GridPane.columnIndex="1" />
+                        <Label fx:id="addCustomerLabel" text="Add New Customer" GridPane.columnIndex="1" />
                         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                            <children>
-                              <Label layoutX="71.0" layoutY="25.0" text="Name" />
+                              <Label fx:id="nameLabel" layoutX="71.0" layoutY="25.0" text="Name" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                            <children>
-                              <Label layoutX="66.0" layoutY="25.0" text="Address" />
+                              <Label fx:id="addressLabel" layoutX="66.0" layoutY="25.0" text="Address" />
                            </children>
                         </Pane>
                         <TextField fx:id="customerAddressField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Pane layoutX="10.0" layoutY="144.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <children>
-                              <Label layoutX="44.0" layoutY="25.0" text="Postal Code" />
+                              <Label fx:id="postalLabel" layoutX="44.0" layoutY="25.0" text="Postal Code" />
                            </children>
                         </Pane>
                         <TextField fx:id="customerPostalCodeField" layoutX="133.0" layoutY="165.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                         <Pane layoutX="10.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <children>
-                              <Label layoutX="71.0" layoutY="25.0" text="Phone" />
+                              <Label fx:id="phoneLabel" layoutX="71.0" layoutY="25.0" text="Phone" />
                            </children>
                         </Pane>
                         <TextField fx:id="customerPHoneField" layoutX="378.0" layoutY="165.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <Pane layoutX="272.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                            <children>
-                              <Label layoutX="71.0" layoutY="25.0" text="Country" />
+                              <Label fx:id="countryLabel" layoutX="71.0" layoutY="25.0" text="Country" />
                            </children>
                         </Pane>
                         <Pane layoutX="534.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                            <children>
-                              <Label layoutX="71.0" layoutY="25.0" text="State" />
+                              <Label fx:id="stateLabel" layoutX="71.0" layoutY="25.0" text="State" />
                            </children>
                         </Pane>
                         <ComboBox fx:id="countryCombo" onAction="#onCountryCombo" onMouseClicked="#countryComboRelease" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                         <ComboBox fx:id="stateCombo" onAction="#onStateCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                         <Button fx:id="saveUpdateButton" mnemonicParsing="false" onAction="#onSaveUpdate" text="Save Update" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#onCancelButton" text="Cancel" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Button fx:id="saveNewCustomer" mnemonicParsing="false" onAction="#onSaveNewCustomer" text="Save New Customer" visible="false" GridPane.rowIndex="3" />
+                        <Label fx:id="edictCustomerLabel" layoutX="141.0" layoutY="27.0" text="Edit Customer" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                </children>
@@ -106,7 +113,7 @@
                         <Button layoutX="249.0" layoutY="13.0" mnemonicParsing="false" onAction="#onDeleteCustomer" text="Delete Customer" />
                         <Button fx:id="exitBtn" layoutX="62.0" layoutY="13.0" mnemonicParsing="false" onAction="#onExitBtn" text="Back to Main" />
                         <Button layoutX="371.0" layoutY="13.0" mnemonicParsing="false" onAction="#onEditCustomer" text="Edit Customer" />
-                        <Button layoutX="489.0" layoutY="13.0" mnemonicParsing="false" onAction="#onSaveNewCustomer" text="Save New Customer" />
+                        <Button layoutX="473.0" layoutY="13.0" mnemonicParsing="false" onAction="#onAddNewCustomer" text="Add New Customer" />
                      </children>
                   </Pane>
                </children>

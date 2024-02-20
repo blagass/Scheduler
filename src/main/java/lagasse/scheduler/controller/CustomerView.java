@@ -23,7 +23,9 @@ import lagasse.scheduler.model.FirstLevelDivision;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class CustomerView implements Initializable {
     @FXML
@@ -32,11 +34,47 @@ public class CustomerView implements Initializable {
     @FXML
     private Button saveUpdateButton;
 
+    @FXML
+    private boolean editMode;
+
+
+    @FXML
+    private Label nameLabel;
+
+    @FXML
+    private Label phoneLabel;
+
+    @FXML
+    private Label postalLabel;
+
+    @FXML
+    private Label stateLabel;
+
+    @FXML
+    private Label addressLabel;
+
+    @FXML
+    private Label countryLabel;
+
+    @FXML
+    private Label addCustomerLabel;
+
+    @FXML
+    private Label edictCustomerLabel;
+
+    @FXML
+    private Button cancelButton;
+
+
+    @FXML
+    private Button saveNewCustomer;
+
     //text fields
     public TextField customerNameField;
     public TextField customerAddressField;
     public TextField customerPostalCodeField;
     public TextField customerPHoneField;
+
 
     //table variables
     @FXML
@@ -57,7 +95,7 @@ public class CustomerView implements Initializable {
     private TableColumn<?, ?> custStateCol;
 
 
-    //transfer custoemr variables
+    //transfer customer variables
     @FXML
     public Customer currentlySelectedCustomer;
     @FXML
@@ -86,6 +124,7 @@ public class CustomerView implements Initializable {
             setDivisions();
             setTableColumns();
             setCombos();
+            setVisible(false); //Trigger to hide top options
 
     }
 
@@ -126,6 +165,28 @@ public class CustomerView implements Initializable {
         }
     }
 
+    private void setVisible(boolean visible){
+        customerNameField.setVisible(visible);
+        customerAddressField.setVisible(visible);
+        customerPostalCodeField.setVisible(visible);
+        customerPHoneField.setVisible(visible);
+        countryCombo.setVisible(visible);
+        stateCombo.setVisible(visible);
+        nameLabel.setVisible(visible);
+        addressLabel.setVisible(visible);
+        postalLabel.setVisible(visible);
+        phoneLabel.setVisible(visible);
+        countryLabel.setVisible(visible);
+        stateLabel.setVisible(visible);
+        edictCustomerLabel.setVisible(visible);
+        addCustomerLabel.setVisible(visible);
+        saveUpdateButton.setVisible(visible);
+        cancelButton.setVisible(visible);
+
+
+    }
+
+
     @FXML
     private void setTableColumns(){
         custIdCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
@@ -139,7 +200,9 @@ public class CustomerView implements Initializable {
 
     @FXML
     void onEditCustomer(ActionEvent event) throws SQLException {
-
+        editMode = true;
+        setVisible(true);
+        customerTableView.setDisable(true);
         saveUpdateButton.setVisible(true);
         Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
         int divisionId = selectedCustomer.getDivisionId();
@@ -198,35 +261,55 @@ public class CustomerView implements Initializable {
 
     @FXML
     void onCountryCombo(ActionEvent event) throws SQLException {
-//        //Country/State
-//
-//        ObservableList<FirstLevelDivision>usDivisions = FXCollections.observableArrayList();
-//        ObservableList<FirstLevelDivision>canadaDivisions = FXCollections.observableArrayList();
-//        ObservableList<FirstLevelDivision>ukDivisions = FXCollections.observableArrayList();
-//
-//        usDivisions.setAll(FirstLevelDivisionDAO.usStates());
-//        canadaDivisions.setAll(FirstLevelDivisionDAO.canadaStates());
-//        ukDivisions.setAll(FirstLevelDivisionDAO.ukStates());
+if(!editMode) {
+//    Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
+//    if (countryComboSelect.getCountryId() == 1) {
+//        stateCombo.setItems(usDivisions);
 //
 //
+//    } else if (countryComboSelect.getCountryId() == 2) {
+//        stateCombo.setItems(ukDivisions);
 //
-//        Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
-//        if(countryComboSelect.getCountryId() == 1){
-//            stateCombo.setItems(usDivisions);
+//    } else if (countryComboSelect.getCountryId() == 3) {
+//        stateCombo.setItems(canadaDivisions);
 //
-//        } else if (countryComboSelect.getCountryId() == 2) {
-//            stateCombo.setItems(ukDivisions);
-//
-//        } else if (countryComboSelect.getCountryId() == 3) {
-//            stateCombo.setItems(canadaDivisions);
-//
-//        } else{
-//            System.out.println("Select a Country");
-//        }
+//    } else {
+//        System.out.println("Select a Country");
+//    }
+}else {
 
+    Country countryComboSelect = countryCombo.getSelectionModel().getSelectedItem();
+    if (countryComboSelect.getCountryId() == 1) {
+        stateCombo.setItems(usDivisions);
+        //stateCombo.getSelectionModel().selectFirst();
+
+    } else if (countryComboSelect.getCountryId() == 2) {
+        stateCombo.setItems(ukDivisions);
+       // stateCombo.getSelectionModel().selectFirst();
+    } else if (countryComboSelect.getCountryId() == 3) {
+        stateCombo.setItems(canadaDivisions);
+      //  stateCombo.getSelectionModel().selectFirst();
+    } else {
+        System.out.println("Select a Country");
     }
+}
+}
+public void clearFields(){
+        editMode = false;
+    setVisible(false);
+    customerTableView.setDisable(false);
+    customerNameField.clear();
+    customerAddressField.clear();
+    customerPostalCodeField.clear();
+    customerPHoneField.clear();
+    countryCombo.getSelectionModel().clearSelection();
+    stateCombo.getSelectionModel().clearSelection();
+}
 
-
+    public void onCancelButton(ActionEvent actionEvent) {
+    clearFields();
+    saveNewCustomer.setVisible(false);
+    }
     @FXML
     public void countryComboRelease() throws SQLException {
 //
@@ -262,13 +345,12 @@ public class CustomerView implements Initializable {
         Customer customer = new Customer(-0,"test","101 street","1234","22354", 1,"canadas");
 
 
-
         String customerName = customerNameField.getText();
         String customerAddress = customerAddressField.getText();
         String customerPostal = customerPostalCodeField.getText();
         String customerPhone = customerPHoneField.getText();
         int customerDivisionId  = countryCombo.getSelectionModel().getSelectedItem().getCountryId();
-        //String customerDivisionName = stateCombo.getSelectionModel().getSelectedItem().toString();
+        String customerDivisionName = stateCombo.getSelectionModel().getSelectedItem().toString();
         System.out.println(customerName);
 
 
@@ -277,17 +359,7 @@ public class CustomerView implements Initializable {
         customer.setPostalCode(customerPostal);
         customer.setPhone(customerPhone);
         customer.setDivisionId(customerDivisionId);
-        //customer.setDivisionName(customerDivisionName);
-
-
-//        System.out.println(customerName);
-//    System.out.println(customer.getCustomerName());
-//    System.out.println(customer.getCustomerId());
-//        System.out.println(customer.getAddress());
-//        System.out.println(customer.getPostalCode());
-//        System.out.println(customer.getPhone());
-//        System.out.println(customer.getDivisionId());
-//        //System.out.println(customer.getDivisionName());
+        customer.setDivisionName(customerDivisionName);
 
         transferCustomer  = customer;
         CustomerDAO customerDao = new CustomerDAO();
@@ -307,8 +379,12 @@ public class CustomerView implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        customerTableView.setItems(transferCustomer);
 
+        customerTableView.setItems(transferCustomer);
+        setVisible(false);
+        customerTableView.setDisable(false);
+        clearFields();
+        saveNewCustomer.setVisible(false);
     }
 
     @FXML
@@ -325,14 +401,15 @@ public class CustomerView implements Initializable {
 
     }
 
+
     @FXML
     void onSaveUpdate(ActionEvent event) throws SQLException {
-
+        customerTableView.setDisable(false);
         Customer customer = new Customer(-0,"test","101 street","1234","22354", 1,"canadas");
         //Table Update
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
         allCustomers.setAll(CustomerDAO.getAll());
-        customerTableView.setItems(allCustomers);
+
 
         String customerName = customerNameField.getText();
         String customerAddress = customerAddressField.getText();
@@ -351,18 +428,30 @@ public class CustomerView implements Initializable {
         customer.setDivisionName(customerDivisionName);
 
         CustomerDAO customerDao = new CustomerDAO();
-        System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
+        //System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
         customerDao.add(customer);
+
+        CustomerDAO.getCountryId(customerDivisionId);
+
+
+
+
+
 
         //Remove old customer record
         Customer deleteCustomer = currentlySelectedCustomer;
         CustomerDAO.delete(deleteCustomer.getCustomerId());
         System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
 
-//        //Table Update
-//        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
-//        allCustomers.setAll(CustomerDAO.getAll());
-//        customerTableView.setItems(allCustomers);
+
+        //Table Update
+        //ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
+        allCustomers.setAll(CustomerDAO.getAll());
+        customerTableView.setItems(allCustomers);
+        setVisible(false);
+
+        editMode = false;
+        clearFields();
 
     }
 
@@ -379,6 +468,15 @@ public class CustomerView implements Initializable {
         window.setScene(scene);
         window.show();
 
+    }
+
+
+    @FXML
+    void onAddNewCustomer(ActionEvent event) {
+        setVisible(true);
+        customerTableView.setDisable(true);
+        saveNewCustomer.setVisible(true);
+        saveUpdateButton.setVisible(false);
     }
 
 }

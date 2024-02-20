@@ -62,6 +62,8 @@ public class AppointmentView implements Initializable {
 
 
     @FXML
+    private TextField titleField;
+    @FXML
     private TextField contactField;
 
     @FXML
@@ -88,8 +90,6 @@ public class AppointmentView implements Initializable {
     @FXML
     private DatePicker startDatePicker;
 
-    @FXML
-    private PasswordField titleField;
 
     @FXML
     private TextField typeField;

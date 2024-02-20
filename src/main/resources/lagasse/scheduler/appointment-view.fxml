@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -69,7 +68,6 @@
                         <DatePicker fx:id="startDatePicker" onAction="#onStartDatePicker" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                         <ComboBox fx:id="startCombo" onAction="#onStartCombo" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                         <TextField fx:id="appIdField" disable="true" GridPane.columnIndex="1" />
-                        <PasswordField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="locationField" GridPane.columnIndex="3" />
                         <TextField fx:id="typeField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
@@ -78,6 +76,7 @@
                         <Label text="Customer ID" GridPane.columnIndex="4" />
                         <Label text="User ID" GridPane.columnIndex="6" />
                         <ComboBox fx:id="contactCombo" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField fx:id="titleField" layoutX="135.0" layoutY="110.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>
