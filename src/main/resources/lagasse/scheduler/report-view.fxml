@@ -70,7 +70,7 @@
                   <Button mnemonicParsing="false" onAction="#onByMonth" text="Appointments by Month" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Customer Schedules" GridPane.columnIndex="2" />
                   <Label text="Another One" GridPane.columnIndex="3" />
-                  <ComboBox fx:id="typeComboBox" onMouseClicked="#onTypeMouseClick" prefWidth="150.0" promptText="Appointments By Type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="typeComboBox" onMouseExited="#onTypeMouseClick" prefWidth="150.0" promptText="Appointments By Type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

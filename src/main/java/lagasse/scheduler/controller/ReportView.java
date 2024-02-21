@@ -159,14 +159,14 @@ public class ReportView implements Initializable {
         appointmentTable.setItems(AppointmentDAO.getAll());
         ObservableList<Appointment> allAppointments = appointmentTable.getItems();
 
-        // Get the selected contact name
         String selectedContactName = (String) typeComboBox.getValue();
 
-        // Lambda expression for filtering (assuming Type represents contact name)
         ObservableList<Appointment> filteredAppointments = allAppointments.filtered(
                 appointment -> appointment.getType().equals(selectedContactName)
         );
 
         appointmentTable.setItems(filteredAppointments);
+
+
     }
 }
