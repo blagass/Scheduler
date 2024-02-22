@@ -128,10 +128,10 @@ public class ReportView implements Initializable {
 
         ObservableList<Appointment> allAppointments = appointmentTable.getItems();
 
-        // Get the selected type from a ComboBox (you'll need to add this to your FXML)
+
         String selectedType = (String) typeComboBox.getValue();
 
-        // Lambda expression with string comparison
+
         ObservableList<Appointment> filteredAppointments = allAppointments.filtered(
                 appointment -> appointment.getType().equals(selectedType)
         );
@@ -143,7 +143,7 @@ public class ReportView implements Initializable {
         appointmentTable.setItems(AppointmentDAO.getAll());
         ObservableList<Appointment> allAppointments = appointmentTable.getItems();
 
-        // Lambda expression for filtering
+        //Lambda
         ObservableList<Appointment> filteredAppointments = allAppointments.filtered(
                 appointment -> appointment.getStart().getMonthValue() == LocalDateTime.now().getMonthValue()
         );

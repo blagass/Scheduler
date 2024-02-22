@@ -118,10 +118,10 @@ public class AppointmentView implements Initializable {
         ObservableList<Contact>transferContact = FXCollections.observableArrayList();
         ObservableList<Appointment>transferAppointment = FXCollections.observableArrayList();
 
-        //Set up Time combo
+
         ObservableList<LocalTime> hours = FXCollections.observableArrayList();
 
-        // Lambda to populate the lis
+        //Lambda
         Runnable addHours = () -> {
             for (int hour = 0; hour < 24; hour++) {
                 for (int minute = 0; minute < 60; minute += 30) {
@@ -133,7 +133,7 @@ public class AppointmentView implements Initializable {
 
         addHours.run();
 
-        // Printing the contents of the ObservableList
+
         System.out.println("Hours in the list: " + hours);
 
 
