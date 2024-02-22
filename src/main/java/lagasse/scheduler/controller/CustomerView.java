@@ -404,12 +404,13 @@ public void clearFields(){
 
     @FXML
     void onSaveUpdate(ActionEvent event) throws SQLException {
+
         customerTableView.setDisable(false);
         Customer customer = new Customer(-0,"test","101 street","1234","22354", 1,"canadas");
+
         //Table Update
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
         allCustomers.setAll(CustomerDAO.getAll());
-
 
         String customerName = customerNameField.getText();
         String customerAddress = customerAddressField.getText();
@@ -419,7 +420,6 @@ public void clearFields(){
         String customerDivisionName = stateCombo.getSelectionModel().getSelectedItem().toString();
         System.out.println(customerName);
 
-
         customer.setCustomerName(customerName);
         customer.setAddress(customerAddress);
         customer.setPostalCode(customerPostal);
@@ -428,24 +428,17 @@ public void clearFields(){
         customer.setDivisionName(customerDivisionName);
 
         CustomerDAO customerDao = new CustomerDAO();
-        //System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
+
         customerDao.add(customer);
 
         CustomerDAO.getCountryId(customerDivisionId);
-
-
-
-
-
 
         //Remove old customer record
         Customer deleteCustomer = currentlySelectedCustomer;
         CustomerDAO.delete(deleteCustomer.getCustomerId());
         System.out.println("Number of customers in the database: " + CustomerDAO.getAll().size());
 
-
         //Table Update
-        //ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
         allCustomers.setAll(CustomerDAO.getAll());
         customerTableView.setItems(allCustomers);
         setVisible(false);

@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lagasse.scheduler.controller.LoginView">
@@ -26,17 +27,17 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="36.0" layoutY="57.0" text="Welcome, Please Log in" />
+                  <Label fx:id="zoneIdLabel" layoutX="36.0" layoutY="57.0" text="Welcome, Please Log in" />
                </children>
             </AnchorPane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label layoutX="147.0" layoutY="57.0" text="User:" />
+                  <Label fx:id="userLabel" layoutX="147.0" layoutY="57.0" text="User:" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label layoutX="142.0" layoutY="57.0" text="Password" />
+                  <Label fx:id="passwordLabel" layoutX="142.0" layoutY="57.0" text="Password" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -49,7 +50,13 @@
                   <TextField fx:id="loginField" layoutX="14.0" layoutY="53.0" />
                </children>
             </Pane>
-            <Button mnemonicParsing="false" onAction="#onLogin" text="Log Me In" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLogin" text="Log Me In" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="zoneLabel" text="Zone Label" visible="false" />
+                  <Label fx:id="loginText" text="loginText" visible="false" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </children>
