@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-28T09:58:44.696Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="VCHQLvPQyeIylRtS2dSz" version="23.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-28T10:00:02.916Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="64t2teL9rMu23MHNc9AQ" version="23.1.7" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
-    <mxGraphModel dx="1661" dy="-603" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3483" dy="199" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -496,11 +496,8 @@
         <mxCell id="xxC8CCXD4AA7zzRw_g-T-156" value="+ getById(id: int): Element&amp;lt;FirstLevelDivision&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="xxC8CCXD4AA7zzRw_g-T-149" vertex="1">
           <mxGeometry y="164" width="440" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="4fu64irOgJYzqdShPqIs-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4fu64irOgJYzqdShPqIs-12" target="xxC8CCXD4AA7zzRw_g-T-104">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-12" value="JBDC" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#66FF66;" vertex="1" parent="1">
-          <mxGeometry x="870" y="1490" width="360" height="220" as="geometry" />
+          <mxGeometry x="960" y="1620" width="360" height="220" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-13" value="- protocol: String&lt;br&gt;- vendor: String&lt;br&gt;- location: String&lt;br&gt;- databaseName: String&lt;br&gt;- jdbUrl: String&lt;br&gt;- driver: String&lt;br&gt;- userName: String&lt;br&gt;- password: String&lt;br&gt;+ connection: Connection" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="4fu64irOgJYzqdShPqIs-12">
           <mxGeometry y="26" width="360" height="144" as="geometry" />
@@ -838,6 +835,12 @@
             <mxPoint x="960" y="3030" as="sourcePoint" />
             <mxPoint x="960" y="2870" as="targetPoint" />
             <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4fu64irOgJYzqdShPqIs-133" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.199;exitY=0.002;exitDx=0;exitDy=0;entryX=0.111;entryY=0.998;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" edge="1" parent="1" source="xxC8CCXD4AA7zzRw_g-T-104" target="4fu64irOgJYzqdShPqIs-15">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="1110" y="1880" as="sourcePoint" />
+            <mxPoint x="1040" y="1840" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
