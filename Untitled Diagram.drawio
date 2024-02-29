@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-29T11:46:17.457Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="J3fo3reoYxVbY3FIzh6r" version="23.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-29T11:50:04.709Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="NGanuKshk_pr1J3xVEkU" version="23.1.7" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
-    <mxGraphModel dx="3422" dy="-1208" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3666" dy="-1110" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -584,16 +584,16 @@
           <mxGeometry y="60" width="360" height="110" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-40" value="AppointmentAddViewController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EA6B66;" parent="1" vertex="1">
-          <mxGeometry x="1830" y="3400" width="290" height="86" as="geometry" />
+          <mxGeometry x="1830" y="3400" width="290" height="290" as="geometry" />
         </mxCell>
-        <mxCell id="4fu64irOgJYzqdShPqIs-41" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
-          <mxGeometry y="26" width="290" height="26" as="geometry" />
+        <mxCell id="4fu64irOgJYzqdShPqIs-41" value="- appointmentId: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- appointmentTitle: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- appointmentDescription: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- appointmentLocation: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- appointmentContact CombBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- appointmentType: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- start: ComboBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- end: ComboBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- customerId: TextBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- userId: TextBox" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
+          <mxGeometry y="26" width="290" height="164" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-42" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
-          <mxGeometry y="52" width="290" height="8" as="geometry" />
+          <mxGeometry y="190" width="290" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="4fu64irOgJYzqdShPqIs-43" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
-          <mxGeometry y="60" width="290" height="26" as="geometry" />
+        <mxCell id="4fu64irOgJYzqdShPqIs-43" value="- initialize(resourceBundle: ResourceBundle): void&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- onSave(actionEvent: ActionEvent): void&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- onCancel(actionEvent: ActionEvent): void&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
+          <mxGeometry y="198" width="290" height="92" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-44" value="AppointmentUpdateViewController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EA6B66;" parent="1" vertex="1">
           <mxGeometry x="1400" y="3640" width="350" height="270" as="geometry" />
@@ -765,7 +765,7 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4fu64irOgJYzqdShPqIs-96" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FF5C5C;" parent="1" source="4fu64irOgJYzqdShPqIs-37" target="4fu64irOgJYzqdShPqIs-41" edge="1">
+        <mxCell id="4fu64irOgJYzqdShPqIs-96" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeColor=#FF5C5C;" parent="1" source="4fu64irOgJYzqdShPqIs-37" target="4fu64irOgJYzqdShPqIs-41" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="1390" y="3663" as="sourcePoint" />
             <mxPoint x="1391" y="3780" as="targetPoint" />
