@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-29T12:15:51.255Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="Dbk-ooa3JWt4kDV7Ech1" version="23.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-29T12:17:32.976Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="QpGYgH7JZ3Rivk55X6X-" version="23.1.7" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
-    <mxGraphModel dx="4039" dy="-923" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="4384" dy="-777" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -942,6 +942,12 @@
         </mxCell>
         <mxCell id="jmaZK69n8vFZVDpIt6BC-23" value="- initialize(resourceBundle: ResourceBundle): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jmaZK69n8vFZVDpIt6BC-20">
           <mxGeometry y="60" width="360" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-27" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0;entryY=0.46;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="1" source="jmaZK69n8vFZVDpIt6BC-21" target="oAobGgmq5hiNAL12d7sZ-75">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="990" y="3100" as="sourcePoint" />
+            <mxPoint x="1150" y="3100" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
