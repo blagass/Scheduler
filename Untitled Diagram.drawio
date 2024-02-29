@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-29T12:10:34.226Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="EeWjctsyRvIiyvZ8C_L1" version="23.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-29T12:15:51.255Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="Dbk-ooa3JWt4kDV7Ech1" version="23.1.7" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
-    <mxGraphModel dx="5112" dy="-470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="4039" dy="-923" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -930,6 +930,18 @@
             <mxPoint x="1920" y="2221" as="sourcePoint" />
             <mxPoint x="1986" y="2220" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-20" value="ReportController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EA6B66;" vertex="1" parent="1">
+          <mxGeometry x="380" y="3420" width="360" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-21" value="+ reportTable: TableView (not sure what to use for display?)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jmaZK69n8vFZVDpIt6BC-20">
+          <mxGeometry y="26" width="360" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-22" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="jmaZK69n8vFZVDpIt6BC-20">
+          <mxGeometry y="52" width="360" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-23" value="- initialize(resourceBundle: ResourceBundle): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="jmaZK69n8vFZVDpIt6BC-20">
+          <mxGeometry y="60" width="360" height="130" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
