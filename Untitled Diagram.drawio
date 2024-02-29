@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-29T07:40:56.522Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="VFt8y5BH8uvpdVCwbmKg" version="23.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-29T07:43:15.944Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="1u7G2heYfSQpfsuMBack" version="23.1.7" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
     <mxGraphModel dx="3030" dy="-999" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -524,7 +524,7 @@
           <mxGeometry y="178" width="360" height="42" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-18" value="TimeZone" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FF8000;" parent="1" vertex="1">
-          <mxGeometry x="320" y="3160" width="440" height="174" as="geometry" />
+          <mxGeometry x="320" y="3160" width="440" height="270" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-21" value="+ final START_HOURS: ZonedDateTime&lt;br&gt;- startHours: ObservableList&amp;lt;LocalTime&amp;gt;&lt;br&gt;- endHours: ObservableList&amp;lt;LocalTime&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="4fu64irOgJYzqdShPqIs-18" vertex="1">
           <mxGeometry y="26" width="440" height="94" as="geometry" />
@@ -532,8 +532,8 @@
         <mxCell id="4fu64irOgJYzqdShPqIs-20" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="4fu64irOgJYzqdShPqIs-18" vertex="1">
           <mxGeometry y="120" width="440" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="jmaZK69n8vFZVDpIt6BC-1" value="+&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="4fu64irOgJYzqdShPqIs-18">
-          <mxGeometry y="140" width="440" height="34" as="geometry" />
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-1" value="- loadTimes(): void&lt;br&gt;+ overlapCheck(start: LocalDateTime, end: LocalDateTime, customerId: int, appointmentId: int): boolean&lt;br&gt;+ getStartHours(): ObservableList&amp;lt;LocalTime&amp;gt;&lt;br&gt;+ getEndHours(): ObservableList&amp;lt;LocalTime&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="4fu64irOgJYzqdShPqIs-18">
+          <mxGeometry y="140" width="440" height="130" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-23" value="CustomerViewController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EA6B66;" parent="1" vertex="1">
           <mxGeometry x="-640" y="2360" width="360" height="250" as="geometry" />
