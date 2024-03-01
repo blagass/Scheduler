@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-01T20:53:53.004Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="tKNzJlejj_2tF_Qj6n8g" version="23.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-01T20:54:15.772Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="0C5kZXu6aYAndOwB9Nwa" version="23.1.8" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
     <mxGraphModel dx="3388" dy="-1208" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -328,10 +328,10 @@
         <mxCell id="xxC8CCXD4AA7zzRw_g-T-90" value="FirstLevelDivision" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#3399FF;" parent="1" vertex="1">
           <mxGeometry x="320" y="2600" width="440" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="xxC8CCXD4AA7zzRw_g-T-91" value="- divisionId: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="xxC8CCXD4AA7zzRw_g-T-90" vertex="1">
+        <mxCell id="xxC8CCXD4AA7zzRw_g-T-91" value="- id: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="xxC8CCXD4AA7zzRw_g-T-90" vertex="1">
           <mxGeometry y="26" width="440" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="xxC8CCXD4AA7zzRw_g-T-94" value="- divisionName: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="xxC8CCXD4AA7zzRw_g-T-90" vertex="1">
+        <mxCell id="xxC8CCXD4AA7zzRw_g-T-94" value="- name: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="xxC8CCXD4AA7zzRw_g-T-90" vertex="1">
           <mxGeometry y="52" width="440" height="26" as="geometry" />
         </mxCell>
         <mxCell id="xxC8CCXD4AA7zzRw_g-T-95" value="- countryId: id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="xxC8CCXD4AA7zzRw_g-T-90" vertex="1">
