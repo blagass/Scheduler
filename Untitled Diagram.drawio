@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-06-17T20:54:34.635Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="3zx67EKGE-ipuiKx35fC" version="24.5.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-06-17T21:00:24.492Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="QzRz-jdiBrD1N7PyDw-x" version="24.5.4" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
-    <mxGraphModel dx="6575" dy="290" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3200" dy="-1245" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -550,7 +550,7 @@
         <mxCell id="4fu64irOgJYzqdShPqIs-40" value="AppointmentAddViewController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EA6B66;" parent="1" vertex="1">
           <mxGeometry x="1830" y="3480" width="290" height="290" as="geometry" />
         </mxCell>
-        <mxCell id="4fu64irOgJYzqdShPqIs-41" value="- id: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- title: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- description: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- location: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- contact CombBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- type: TextField&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- start: ComboBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- end: ComboBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- customerId: TextBox&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- userId: TextBox" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
+        <mxCell id="4fu64irOgJYzqdShPqIs-41" value="+ titleField: TextField&lt;div&gt;+ descriptionField: TextfField&lt;/div&gt;&lt;div&gt;+ typeField:TextField&lt;/div&gt;&lt;div&gt;+ customerIdField: TextField&lt;/div&gt;&lt;div&gt;+ userIdField: TextField&lt;/div&gt;&lt;div&gt;+ contactCombo: ComboBox&amp;lt;Contact&amp;gt;&lt;/div&gt;&lt;div&gt;+ startTimeCombo: ComboBox&amp;lt;LocalTime&amp;gt;&lt;/div&gt;&lt;div&gt;+ endTimeCombo: ComboBox&amp;lt;LocalTime&amp;gt;&lt;/div&gt;&lt;div&gt;+ startDatePicker: DatePicker&lt;/div&gt;&lt;div&gt;+ endDatePicker: DatePicker&lt;/div&gt;&lt;div&gt;+ locationField: TextField&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
           <mxGeometry y="26" width="290" height="164" as="geometry" />
         </mxCell>
         <mxCell id="4fu64irOgJYzqdShPqIs-42" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="4fu64irOgJYzqdShPqIs-40" vertex="1">
@@ -721,7 +721,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="4fu64irOgJYzqdShPqIs-93" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.219;exitY=0.03;exitDx=0;exitDy=0;entryX=0.217;entryY=1.105;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;strokeColor=#FF5C5C;" parent="1" source="4fu64irOgJYzqdShPqIs-36" target="MfuRFF5jVH7wXTe1eera-4" edge="1">
+        <mxCell id="4fu64irOgJYzqdShPqIs-93" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.219;exitY=0.03;exitDx=0;exitDy=0;entryX=0.396;entryY=0.939;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;strokeColor=#FF5C5C;" parent="1" source="4fu64irOgJYzqdShPqIs-36" target="MfuRFF5jVH7wXTe1eera-4" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="1498" y="4300" as="sourcePoint" />
             <mxPoint x="1658" y="4290" as="targetPoint" />
