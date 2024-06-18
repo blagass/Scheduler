@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-06-18T00:49:46.584Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="erIuZ8vL2xTFvMU62cgm" version="24.5.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-06-18T00:56:05.104Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="wW27sSTLgvbeVNmlagOR" version="24.5.4" type="github">
   <diagram name="Page-1" id="9f46799a-70d6-7492-0946-bef42562c5a5">
-    <mxGraphModel dx="4144" dy="-816" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="4700" dy="-563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -427,7 +427,7 @@
         <mxCell id="MfuRFF5jVH7wXTe1eera-7" value="+ userExists(userId): boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="xxC8CCXD4AA7zzRw_g-T-133">
           <mxGeometry y="156" width="360" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="xxC8CCXD4AA7zzRw_g-T-141" value="AppointmentDAO&amp;lt;Contact&amp;gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FF99FF;" parent="1" vertex="1">
+        <mxCell id="xxC8CCXD4AA7zzRw_g-T-141" value="AppointmentDAO&amp;lt;Appointment&amp;gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#FF99FF;" parent="1" vertex="1">
           <mxGeometry x="1360" y="3120" width="370" height="188" as="geometry" />
         </mxCell>
         <mxCell id="xxC8CCXD4AA7zzRw_g-T-144" value="+ getList(): ObservableList&amp;lt;Appointment&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="xxC8CCXD4AA7zzRw_g-T-141" vertex="1">
@@ -897,16 +897,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jmaZK69n8vFZVDpIt6BC-20" value="ReportController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#EA6B66;" parent="1" vertex="1">
-          <mxGeometry x="380" y="3420" width="360" height="190" as="geometry" />
+          <mxGeometry x="340" y="3400" width="440" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="jmaZK69n8vFZVDpIt6BC-21" value="+ reportTable: TableView (not sure what to use for display?)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="jmaZK69n8vFZVDpIt6BC-20" vertex="1">
-          <mxGeometry y="26" width="360" height="26" as="geometry" />
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-21" value="+ contactSchedule: TextArea&lt;div&gt;+ mostAppointments: TextArea&lt;/div&gt;&lt;div&gt;+ appointmentsByType: TextArea&lt;/div&gt;&lt;div&gt;+ appointmentsByMonth: TextArea&lt;/div&gt;&lt;div&gt;- appointmentDAO: AppointmentDAO&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="jmaZK69n8vFZVDpIt6BC-20" vertex="1">
+          <mxGeometry y="26" width="440" height="114" as="geometry" />
         </mxCell>
         <mxCell id="jmaZK69n8vFZVDpIt6BC-22" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="jmaZK69n8vFZVDpIt6BC-20" vertex="1">
-          <mxGeometry y="52" width="360" height="8" as="geometry" />
+          <mxGeometry y="140" width="440" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="jmaZK69n8vFZVDpIt6BC-23" value="- initialize(resourceBundle: ResourceBundle): void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="jmaZK69n8vFZVDpIt6BC-20" vertex="1">
-          <mxGeometry y="60" width="360" height="130" as="geometry" />
+        <mxCell id="jmaZK69n8vFZVDpIt6BC-23" value="- initialize(resourceBundle: ResourceBundle): void&lt;div&gt;- countsByMonth(appointments:List&amp;lt;Apointment&amp;gt;:List&amp;lt;AppointmentCount&amp;gt;&lt;/div&gt;&lt;div&gt;- updateCount(counts:List&amp;lt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="jmaZK69n8vFZVDpIt6BC-20" vertex="1">
+          <mxGeometry y="148" width="440" height="172" as="geometry" />
         </mxCell>
         <mxCell id="jmaZK69n8vFZVDpIt6BC-27" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0;entryY=0.46;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" parent="1" source="jmaZK69n8vFZVDpIt6BC-21" target="oAobGgmq5hiNAL12d7sZ-75" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -915,7 +915,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jmaZK69n8vFZVDpIt6BC-28" value="login_activity.txt" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="630" y="3310" width="110" height="50" as="geometry" />
+          <mxGeometry x="630" y="3220" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="jmaZK69n8vFZVDpIt6BC-29" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.907;exitY=-0.011;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.701;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="jmaZK69n8vFZVDpIt6BC-20" target="jmaZK69n8vFZVDpIt6BC-28" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -1006,6 +1006,16 @@
               <mxPoint x="1580" y="2295" />
               <mxPoint x="1580" y="2340" />
               <mxPoint x="1720" y="2340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MfuRFF5jVH7wXTe1eera-28" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jmaZK69n8vFZVDpIt6BC-20" target="xxC8CCXD4AA7zzRw_g-T-141">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="749" y="3406" as="sourcePoint" />
+            <mxPoint x="480" y="3080" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="460" y="3090" />
+              <mxPoint x="1453" y="3080" />
             </Array>
           </mxGeometry>
         </mxCell>
